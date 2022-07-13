@@ -1,0 +1,17 @@
+.center {
+    text-align: center;
+}
+
+hr {
+    margin-top: 5em;
+}
+
+.link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: blueviolet;
+}

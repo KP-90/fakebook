@@ -1,0 +1,12 @@
+.title {
+    text-decoration: none;
+    color: black;
+}
+
+.navitem {
+    margin: auto;
+}
+
+.navbar-nav {
+    width: 10em;
+}
