@@ -1,29 +1,15 @@
-// import modules
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
+// Section of the page below the Header. Will hold most, if not all, of the main frontpage content.
 // import components
-import { changeToken } from "./userSlice"
+import SidePanel from "./SidePanel"
+import Timeline from "./Timeline"
+import '../styles/dashboard.css'
 
-const Dashboard = (props) => {
-
-    const dispatch = useDispatch()
-    const user = useSelector(state => state.userInfo.user)
-    const {setToken} = props
-
-    // Log out function
-    const handeClick = () => {
-        localStorage.removeItem('token')
-        dispatch(changeToken({'token': null}))
-        setToken({'token': null})
-    }
+const Dashboard = () => {
 
     return(
-        <div>
-            <h3>Timeline</h3>
-            <h4>Hello, {user.first}</h4>
-
-
+        <div className="dashboard">
+            <SidePanel />
+            <Timeline />
         </div>
         
     )

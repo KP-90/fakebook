@@ -1,0 +1,29 @@
+.dashboard {
+    width: 100vw;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    border-top: 1px solid blue;
+}
+
+textarea {
+    padding: 10px;
+}
+
+.timeline {
+    justify-self: center;
+    width: 80%;
+    max-width: 800px;
+
+}
+
+.form-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.side-panel {
+    grid-column: 0;
+    background-color: aliceblue;
+    border-right: 1px solid blue;
+}

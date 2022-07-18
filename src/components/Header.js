@@ -1,3 +1,4 @@
+// Header will hold the logo(link to home) along with link to current user and log out button
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +28,7 @@ const Header = ({setToken}) => {
                         <Nav.Link></Nav.Link>
                     </Nav>
                     <Nav className="justify-content-end">
-                        <Nav.Item className="navitem"><Link to="/"><h2>{user.username}</h2></Link></Nav.Item>
+                        <Nav.Item className="navitem"><Link to="/user/me"><h2>{user.username}</h2></Link></Nav.Item>
                         <Nav.Item ><Button className="btn" variant="primary" type="button" onClick={HandleLogout}>Logout</Button></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>

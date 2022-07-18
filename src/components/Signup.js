@@ -16,6 +16,7 @@ const Signup = () => {
         console.log("CLICK")
         const form = e.currentTarget
         if(form.checkValidity() === false) {
+            console.log("VALIDATION FAIL")
             e.preventDefault();
             e.stopPropagation();
         }
@@ -74,7 +75,7 @@ const Signup = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Signup</Modal.Title>
                 </Modal.Header>
-                <Form noValidate validated={validate} onSubmit={handleSubmit}>
+                <Form validated={validate} onSubmit={handleSubmit}>
                     <Modal.Body>
                         <Form.Group controlId="first">
                             <Form.Label>First name*</Form.Label>
@@ -101,6 +102,7 @@ const Signup = () => {
                                 placeholder="username"
                                 id="username"
                             />
+                            <Form.Control.Feedback type="invalid">Invalid username</Form.Control.Feedback>
                         </Form.Group>       
                         <Form.Group>
                             <Form.Label>Password</Form.Label>

@@ -8,7 +8,10 @@ import './App.css';
 import Header from './components/Header';
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
+import Userinfo from "./components/Userinfo";
+import SingleUser from "./components/SingleUserInfo";
 import useToken from "./hooks/useToken";
+
 import { changeUser } from "./components/userSlice";
 
 
@@ -33,14 +36,16 @@ function App() {
   if(!token) {
     return <Login setToken={setToken}/>
   }
-  console.log("USER: ", user)
+
   return (
     <div className="App">
       {!user ? (<div>Loading...</div>) : (
       <BrowserRouter>
         <Header setToken={setToken}/>
         <Routes>
-          <Route path="/" element={<Dashboard setToken={setToken}/>} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/user/me" element={<Userinfo />} />
+          <Route path="/user/:id" element={<SingleUser />} />
         </Routes>
       </BrowserRouter>
       )}
