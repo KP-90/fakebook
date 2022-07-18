@@ -42,8 +42,8 @@ const  Login = ({setToken}) => {
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                username: "test",
-                password: "testing"
+                username: "Guest",
+                password: "Guest"
             })
         })
         .then(response => response.json())

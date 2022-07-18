@@ -27,3 +27,8 @@ textarea {
     background-color: aliceblue;
     border-right: 1px solid blue;
 }
+
+.card {
+    padding: 10pxz;
+    text-align: start;
+}

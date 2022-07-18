@@ -52,9 +52,12 @@ const Timeline = () => {
                 </Form>
             </div>
             <h3>Timeline</h3>
-            {allPosts ? allPosts.map((post, i) => {
-                return <Post key={i} info={post}/>
-            }) : <p>Loading....</p>}
+            <div className="container posts">
+                {allPosts ? allPosts.map((post, i) => {
+                    return <Post key={i} info={post}/>
+                }) : <p>Loading....</p>}
+            </div>
+            
         </div>
     )
 }

@@ -1,17 +1,23 @@
+import { Link } from "react-router-dom"
+import { Card } from "react-bootstrap"
+
 const Post = (props) => {
     let {info} = props
-/*      author
+/* props contents:
+        author
         post_contents
         likes
         date_created
 */
     return(
-        <div>
-            <h2>Post</h2>
-            <p>{info.post_contents}</p>
-            <p>posted by {info.author.username}</p>
+        <Card>
+            <Card.Title>
+                <Link to={`/user/${info.author._id}`}>{info.author.username}</Link>
+            </Card.Title>
+            <Card.Subtitle>Posted: {info.date_created}</Card.Subtitle>
+            <Card.Text>{info.post_contents}</Card.Text>
 
-        </div>
+        </Card>
     )
 }
 
