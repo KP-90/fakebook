@@ -78,7 +78,7 @@ const SingleUser = () => {
     }
 
     let ButtonSection = () => {
-        if(currentUser.friends.includes(id) || targetUser.pending_friends.includes(currentUser._id)) {
+        if(currentUser.friends.some(e => e._id === id) || targetUser.pending_friends.some(e => e._id === currentUser._id)) {
             return <div><Button variant="secondary" onClick={RemoveFriend}>Remove Friend</Button></div>
         } else {
             return <div><Button variant="primary" onClick={AddFriend}>Add Friend</Button></div>
