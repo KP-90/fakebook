@@ -32,3 +32,8 @@ textarea {
     padding: 10pxz;
     text-align: start;
 }
+
+.icon:hover {
+    color: blue;
+    cursor: pointer;
+}

@@ -20,7 +20,7 @@ const Timeline = () => {
 
     const HandleSubmit = (e) => {
         e.preventDefault()
-        let text = document.querySelector("textarea").value
+        let text = document.querySelector("textarea")
         fetch('http://localhost:4000/submitPost', {
             method: 'post', 
             mode: 'cors',
@@ -29,12 +29,13 @@ const Timeline = () => {
             },
             body: JSON.stringify({
                 id: user._id,
-                post_contents: text
+                post_contents: text.value
             })})
             .then(response => response.json())
             .then(data => {
                 if(data.ok) {
                     setChange(!stateChange)
+                    text.value = ''
                 }
             })
     }
@@ -53,7 +54,7 @@ const Timeline = () => {
             <h3>Timeline</h3>
             <div className="container posts">
                 {allPosts ? allPosts.map((post, i) => {
-                    return <Post key={i} info={post}/>
+                    return <Post key={i} info={post} stateChange={stateChange} setChange={setChange}/>
                 }) : <p>Loading....</p>}
             </div>
             

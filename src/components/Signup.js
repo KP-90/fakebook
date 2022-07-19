@@ -43,12 +43,13 @@ const Signup = () => {
             .then(response => response.json())
             .then(data => {
                 console.log("DATA: ", data)
-                if(data.errors) {
+                if(!data.ok) {
                     console.log("ERRORS IN SIGNUP")
                     setErrors(data)
                 }
                 else{
                     setShow(false)
+                    window.alert("User succesfully created. \nPlease attempt to log in now.\n")
                 }
             })
         }

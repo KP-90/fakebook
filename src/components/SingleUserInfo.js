@@ -14,8 +14,8 @@ const SingleUser = () => {
     const { id } = useParams()
     const currentUser = useSelector(state => state.userInfo.user)
     
+    // Gets the info of the selectged user, saves it in targetUser
     useEffect(() => {
-
         // If the selected user is the same as the logged in user, redirect them to their own user page.
         if(id === currentUser._id) {
             nav('/user/me')
@@ -77,8 +77,9 @@ const SingleUser = () => {
         })
     }
 
+    // Sees if the current user is a friend or pending friends. Then produces add btn or remove btn
     let ButtonSection = () => {
-        if(currentUser.friends.some(e => e._id === id) || targetUser.pending_friends.some(e => e._id === currentUser._id)) {
+        if((currentUser.friends.some(e => e._id === id)) || (targetUser.pending_friends.includes(currentUser._id))) {
             return <div><Button variant="secondary" onClick={RemoveFriend}>Remove Friend</Button></div>
         } else {
             return <div><Button variant="primary" onClick={AddFriend}>Add Friend</Button></div>
