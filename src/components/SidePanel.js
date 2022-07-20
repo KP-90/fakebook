@@ -1,6 +1,7 @@
 // Side panel of the frontpage. Will hold links to all the users or friends.
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { ListGroup } from "react-bootstrap"
 
 const SidePanel = () => {
 
@@ -25,13 +26,15 @@ const SidePanel = () => {
 
     return(
         <div className="side-panel">
+            <h2>Trending Users</h2>
+            <ListGroup variant="flush">
             {!loading ? (
                 allUsers.map(function(user, i) {
                     let id = user._id
-                    return <li key={i}><Link to={`/user/${id}`}>{user.username}</Link></li>
+                    return <ListGroup.Item key={i}><Link to={`/user/${id}`}>{user.username}</Link></ListGroup.Item>
                 })
             ) : (<div></div>)}
-
+            </ListGroup>
         </div>
     )
 }

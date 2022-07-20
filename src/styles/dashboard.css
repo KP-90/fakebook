@@ -25,7 +25,7 @@ textarea {
 .side-panel {
     grid-column: 0;
     background-color: aliceblue;
-    border-right: 1px solid blue;
+    padding: 5px;
 }
 
 .card {
