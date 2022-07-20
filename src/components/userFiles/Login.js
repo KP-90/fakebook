@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {changeToken, changeUser} from './userSlice'
+import {changeToken, changeUser} from '../userSlice'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../styles/login.css'
+import '../../styles/login.css'
 import Signup from './Signup';
 
 const  Login = ({setToken}) => {

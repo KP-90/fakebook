@@ -7,9 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import './App.css';
 import Header from './components/Header';
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Userinfo from "./components/Userinfo";
-import SingleUser from "./components/SingleUserInfo";
+import Login from "./components/userFiles/Login";
+import Userinfo from "./components/userFiles/Userinfo";
+import SingleUser from "./components/userFiles/SingleUserInfo";
 import useToken from "./hooks/useToken";
 
 import { changeUser } from "./components/userSlice";
