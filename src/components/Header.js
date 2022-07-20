@@ -28,8 +28,8 @@ const Header = ({setToken}) => {
                         <Nav.Link></Nav.Link>
                     </Nav>
                     <Nav className="justify-content-end">
-                        <Nav.Item className="navitem"><Link to="/user/me"><h2>{user.username}</h2></Link></Nav.Item>
-                        <Nav.Item ><Button className="btn" variant="primary" type="button" onClick={HandleLogout}>Logout</Button></Nav.Item>
+                        <Nav.Item className="navitem"><Nav.Link><Link to="/user/me"><h2>{user.username} ({user.pending_friends.length})</h2></Link></Nav.Link></Nav.Item>
+                        <Nav.Item ><Nav.Link><Button className="btn" variant="primary" type="button" onClick={HandleLogout}>Logout</Button></Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const FriendList = ({friends}) => {
 
@@ -13,7 +14,7 @@ const FriendList = ({friends}) => {
             return friends.map((friend, i) => {
                 return <div key={i}>
                     <h5>{friend.first} {friend.last}</h5>
-                    <span>({friend.username})</span>
+                    <Link to={`/user/${friend._id}`}><span>({friend.username})</span></Link>
                 </div>
             })
         } else {
