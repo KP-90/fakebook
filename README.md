@@ -1,8 +1,8 @@
-# Fakebook - ####A Facebook clone
+# Fakebook - A (badly designed) Facebook clone
 
 ## This is the frontend portion of the app
 
-the api/backend can be found here - (Put Link Here)
+the api/backend can be found here - (https://github.com/KP-90/fakebook-api)
 
 
 ### `npm start`
