@@ -2,12 +2,15 @@
 
 import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Button } from "react-bootstrap"
+import { changeUser } from "../userSlice"
+const async = require('async')
 
 const SingleUser = () => {
 
     const nav = useNavigate()
+    const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
     const [stateChange, setChange] = useState(false)
     const [targetUser, setUser] = useState()
@@ -21,12 +24,14 @@ const SingleUser = () => {
             nav('/user/me')
         }
         // Get info for the individual user
-        fetch(`http://localhost:4000/user/${id}`, {mode:'cors',})
-        .then(response => response.json())
-        .then(data => {
-            setUser(data.user)
-            setLoading(false)
-        })
+        if(!targetUser || targetUser._id !== id) {
+            fetch(`http://localhost:4000/user/${id}`, {mode:'cors',})
+            .then(response => response.json())
+            .then(data => {
+                setUser(data.user)
+                setLoading(false)
+            })
+        }
     }, [stateChange])
 
     // Add Friend button, should add the current user id to the pending friends array of the target user.
@@ -51,30 +56,56 @@ const SingleUser = () => {
         let updated_data
         let updated_field
         let index
-        if(targetUser.pending_friends.includes(currentUser._id)) {
+        let currentUserFriends = [...currentUser.friends]   
+        if(targetUser.pending_friends.some(e => e._id === currentUser._id)) {
             updated_field = "pending_friends"
             updated_data = targetUser.pending_friends
             index = updated_data.indexOf(currentUser._id)
             updated_data.splice(index, 1)
         } 
-        else if(targetUser.friends.includes(currentUser._id)) {
+        else if(targetUser.friends.some(e => e._id === currentUser._id)) {
             updated_field = "friends"
+            // Remove from targets friends array
             updated_data = targetUser.friends
             index = updated_data.indexOf(currentUser._id)
             updated_data.splice(index, 1)
-        }
-
-        fetch(`http://localhost:4000/user/update/${targetUser.id}`, {method: 'post', mode: 'cors', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({...targetUser, payload: {[updated_field]: updated_data}})
+            // Remove from selfs friends array
+            let selfIndex = currentUserFriends.indexOf(e => e._id === targetUser._id)
+            if (selfIndex !== null ) {
+                currentUserFriends.splice(selfIndex, 1)
             }
-        )
-        .then(response => response.json())
-        .then(data => {
-            setChange(!stateChange)
-        })
+        }
+        async.parallel([
+            // Remove from target user
+            function(callback) {
+                fetch(`http://localhost:4000/user/update/${targetUser.id}`, {method: 'post', mode: 'cors', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({...targetUser, payload: {[updated_field]: updated_data}})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("data1: ", data)
+                })
+            },
+
+            // Remove from current user
+            function(callback) {
+                fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({...currentUser, payload: {[updated_field]: currentUserFriends}})
+                    }
+                )
+                .then(response => response.json())
+                .then(data => {
+                    console.log("data2: ", data)
+                    dispatch(changeUser(data.info))
+                })
+            }
+        ]) 
     }
 
     // Sees if the current user is a friend or pending friends. Then produces add btn or remove btn

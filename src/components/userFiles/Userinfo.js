@@ -2,16 +2,16 @@
 import FriendList from "./FriendsList"
 import { useEffect, useState } from "react"
 import { Button } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { changeUser } from "../userSlice";
 const async = require('async')
-
-
 
 const Userinfo = () => {
 
     const [stateChange, setChange] =  useState(false)
 
     const currentUser = useSelector(state => state.userInfo.user)
+    const dispatch = useDispatch()
     useEffect(() => {
 
     }, [stateChange, currentUser])
@@ -29,6 +29,7 @@ const Userinfo = () => {
         pending_list.splice(targetFriend._id, 1)
         // update both users to have each other in the friends list
         async.parallel([
+            // Update the current users pending and friends list by moving the IDs from one array to the other.
             function(callback) {
                 fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
                     headers: {
@@ -38,8 +39,11 @@ const Userinfo = () => {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    // data returns the updated user. dispatch the change to the store
+                    dispatch(changeUser(data.info))
                 })
             },
+            // Update the Target users friends list
             function(callback) {
                 fetch(`http://localhost:4000/user/update/${targetFriend._id}`, {method: 'post', mode: 'cors', 
                     headers: {
