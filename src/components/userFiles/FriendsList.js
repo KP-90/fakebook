@@ -12,7 +12,7 @@ const FriendList = ({friends}) => {
     let ActualList = () => {
         if(friends.length > 0) {
             return friends.map((friend, i) => {
-                return <div key={i}>
+                return <div key={i} className="friendList">
                     <h5>{friend.first} {friend.last}</h5>
                     <Link to={`/user/${friend._id}`}><span>({friend.username})</span></Link>
                 </div>
@@ -26,7 +26,7 @@ const FriendList = ({friends}) => {
 
     return(
         <>
-            <span onClick={handleShow}>{friends.length} friends</span>
+            <span className="fauxLink" onClick={handleShow}>{friends.length} friends</span>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{friends.length} friends</Modal.Title>

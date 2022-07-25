@@ -1,0 +1,13 @@
+.fauxLink {
+    color: blue;   
+}
+
+.fauxLink:hover {
+    cursor: pointer;
+    color: darkblue;
+}
+
+.friendList {
+    border-bottom: 1px solid black;
+    margin: 5px;
+}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "react-bootstrap"
 import { changeUser } from "../userSlice"
+import '../../styles/userPage.css'
 const async = require('async')
 
 const SingleUser = () => {

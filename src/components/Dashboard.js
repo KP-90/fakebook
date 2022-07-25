@@ -16,3 +16,6 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+// IDEA: incorporate an accordian for the side panel.
+// Docs: https://react-bootstrap.github.io/components/accordion/

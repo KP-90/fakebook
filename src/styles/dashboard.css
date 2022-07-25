@@ -37,3 +37,22 @@ textarea {
     color: blue;
     cursor: pointer;
 }
+
+.likeBtn {
+    font-size: x-large;
+}
+.likeBtn:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.likeBtnLiked {
+    font-size: x-large;
+    color: blue;
+}
+
+.postInfo {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
