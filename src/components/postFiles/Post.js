@@ -56,8 +56,8 @@ const Post = (props) => {
             <Card.Subtitle>Posted: {info.date_created}</Card.Subtitle>
             <Card.Text>{info.post_contents}</Card.Text>
             <div className="postInfo">
-                <Comments /> 
-                <BsHandThumbsUpFill class="likeBtn"/>
+                <Comments id={info._id}/> 
+                <BsHandThumbsUpFill className="likeBtn"/>
             </div>
             <Card.Footer>
                 <div style={{display:'flex', alignItems:'baseline'}}>
