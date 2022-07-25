@@ -12,8 +12,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 To DO:
 
-
-1. Fix remove friend feature. Currently removes from target but not from current
-2. Hash passwords
-3. set api route to environment variable.
-4. ability to delete users
+1. Hash passwords
+2. set api route to environment variable.
+3. ability to delete users
+4. Add like post functionality
+5. delete/edit comments
