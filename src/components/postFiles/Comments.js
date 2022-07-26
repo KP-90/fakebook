@@ -11,6 +11,7 @@ const Comments = ({id}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    // Submits a new comment
     const HandleSubmit = (e) => {
         let commentText = document.querySelector("#postingComment")
         fetch(`http://localhost:4000/comments/${id}`, {
@@ -29,6 +30,15 @@ const Comments = ({id}) => {
         handleClose()
     }
 
+    // Edit the comment
+    const handleEdit = () => {
+        console.log("edit")
+    }
+
+    // Delete the comment
+    const handleDelete = () => {
+        console.log("delete")
+    }
     // Fetch all the comments for this post, and save them in the comments state
     useEffect(() => {
         fetch(`http://localhost:4000/comments/${id}`, {mode:'cors'})
@@ -58,7 +68,12 @@ const Comments = ({id}) => {
                         return <Card key={i}>
                                 <Card.Title>{comment.author.username} at {comment.date_readable}</Card.Title>
                                 <Card.Text>{comment.comment}</Card.Text>
-                                {comment.author._id === currentUser._id ? (<Card.Footer className="comment-footer">edit - delete</Card.Footer>) : (<></>)}
+                                {comment.author._id === currentUser._id ? (
+                                <Card.Footer className="comment-footer">
+                                    <p className="fauxLink" onClick={handleEdit}> edit </p> 
+                                    <p> - </p> 
+                                    <p className="fauxLink" onClick={handleDelete}> delete </p>
+                                </Card.Footer>) : (<></>)}
                             </Card>
                     }) : <p>no comments yet...</p>}
                 </div>

@@ -64,4 +64,9 @@ textarea {
 .comment-footer {
     padding: 0 0 5px 1px;
     height: 20px;
+    display: flex;
+}
+
+.comment-footer > * {
+    margin: 0 5px;
 }

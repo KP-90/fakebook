@@ -1,0 +1,4 @@
+the dashboard.css file includes all the styling for everything thats not the header, the login/signup page, and the user page.
+
+header.css will contain all stylings for everything that belongs in the header.
+
