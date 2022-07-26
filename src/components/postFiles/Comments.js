@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  Button, Form, Modal } from "react-bootstrap"
+import {  Button, Card, Form, Modal } from "react-bootstrap"
 import { useSelector } from "react-redux";
 
 const Comments = ({id}) => {
@@ -47,20 +47,22 @@ const Comments = ({id}) => {
                 <Form>
                     <Form.Control as="textarea" rows={2} id="postingComment" placeholder="Post your comment..."/>
                 </Form>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={HandleSubmit}>
+                    Post Comment
+                </Button>
                 <div>
                     {comments ? comments.map((comment, i) => {
-                        return <p key={i}>{comment.comment} -{comment.author.username}</p>
-                    }) : <></>}
+                        return <Card key={i}>
+                                <Card.Title>{comment.author.username} at {comment.date_readable}</Card.Title>
+                                <Card.Text>{comment.comment}</Card.Text>
+                                {comment.author._id === currentUser._id ? (<Card.Footer className="comment-footer">edit - delete</Card.Footer>) : (<></>)}
+                            </Card>
+                    }) : <p>no comments yet...</p>}
                 </div>
             </Modal.Body>
-            <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={HandleSubmit}>
-                        Post Comment
-                    </Button>
-                </Modal.Footer>
         </Modal>
         </>
         

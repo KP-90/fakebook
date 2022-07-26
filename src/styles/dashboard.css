@@ -14,7 +14,6 @@ textarea {
     justify-self: center;
     width: 80%;
     max-width: 800px;
-
 }
 
 .form-container {
@@ -29,7 +28,7 @@ textarea {
 }
 
 .card {
-    padding: 10pxz;
+    margin-top: 5px;
     text-align: start;
 }
 
@@ -60,4 +59,9 @@ textarea {
     padding: 5px;
     display: flex;
     justify-content: space-between;
+}
+
+.comment-footer {
+    padding: 0 0 5px 1px;
+    height: 20px;
 }

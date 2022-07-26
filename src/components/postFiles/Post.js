@@ -57,7 +57,7 @@ const Post = (props) => {
             <Card.Title>
                 <Link to={`/user/${info.author._id}`}>{info.author.username}</Link>
             </Card.Title>
-            <Card.Subtitle>Posted: {info.date_created}</Card.Subtitle>
+            <Card.Subtitle>Posted: {info.date_readable}</Card.Subtitle>
             <Card.Text>{info.post_contents}</Card.Text>
             <div className="postInfo">
                 <Comments id={info._id}/> 
