@@ -39,7 +39,7 @@ textarea {
 }
 
 .likeBtn {
-    font-size: x-large;
+    font-size: 1.5rem;
 }
 .likeBtn:hover {
     cursor: pointer;
@@ -47,8 +47,13 @@ textarea {
 }
 
 .likeBtnLiked {
-    font-size: x-large;
+    font-size: 1.5rem;
     color: blue;
+}
+
+.likeBtnLiked:hover {
+    cursor: pointer;
+    color: black
 }
 
 .postInfo {

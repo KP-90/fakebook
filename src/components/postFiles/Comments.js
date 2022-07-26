@@ -13,7 +13,6 @@ const Comments = ({id}) => {
 
     const HandleSubmit = (e) => {
         let commentText = document.querySelector("#postingComment")
-        console.log(commentText.value)
         fetch(`http://localhost:4000/comments/${id}`, {
             method: 'post',
             mode: 'cors',
@@ -35,7 +34,6 @@ const Comments = ({id}) => {
         fetch(`http://localhost:4000/comments/${id}`, {mode:'cors'})
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             setComments(data.results)
         })
     }, [])
@@ -43,7 +41,7 @@ const Comments = ({id}) => {
     return(
         <>
         <span className="fauxLink" onClick={handleShow}>{comments ? comments.length : '0'} Comments</span>
-        <Modal show={show} onHide={handleClose}>
+        <Modal size="lg" show={show} onHide={handleClose}>
             <Modal.Header closeButton><Modal.Title>Comments</Modal.Title></Modal.Header>
             <Modal.Body>
                 <Form>

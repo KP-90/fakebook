@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom"
 import { Card, Button } from "react-bootstrap"
-import {BsFillTrashFill, BsHandThumbsUpFill} from "react-icons/bs"
+import {BsFillTrashFill } from "react-icons/bs"
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -10,10 +10,13 @@ import { useSelector } from "react-redux"
 
 import EditPost from "./EditPost";
 import Comments from "./Comments";
+import LikeBtn from "./LikeBtn";
+import { useState } from "react";
 
 /* props contents: author, post_contents, likes, date_created, stateChange, setChange() */
 const Post = (props) => {
     let {info} = props
+
     const currentUser = useSelector(state => state.userInfo.user)
 
     // Delete post function
@@ -30,6 +33,7 @@ const Post = (props) => {
             })
         }
     }
+
 
     // Add delete and edit buttons to logged in user posts. Edit button is located in the EditPost.js file
     // Tooltips are from https://react-bootstrap.github.io/components/overlays/#tooltips
@@ -57,7 +61,7 @@ const Post = (props) => {
             <Card.Text>{info.post_contents}</Card.Text>
             <div className="postInfo">
                 <Comments id={info._id}/> 
-                <BsHandThumbsUpFill className="likeBtn"/>
+                <LikeBtn currentUser={currentUser} info={info}/>
             </div>
             <Card.Footer>
                 <div style={{display:'flex', alignItems:'baseline'}}>
