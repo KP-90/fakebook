@@ -70,3 +70,8 @@ textarea {
 .comment-footer > * {
     margin: 0 5px;
 }
+
+.fadeOutEffect {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
