@@ -73,5 +73,10 @@ textarea {
 
 .fadeOutEffect {
     opacity: 0;
-    transition: opacity 0.5s linear;
+    font-size: 0px;
+    transition: 0.5s linear;
+}
+
+.editBox { 
+    display: none;
 }

@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import {  Button, Form, Modal } from "react-bootstrap"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeComments } from "../userSlice";
 
 import Comment from "./Comment";
 
 const Comments = ({id}) => {
+    const currentUser = useSelector(state => state.userInfo.user)
 
     const [show, setShow] = useState(false);
     const [comments, setComments] = useState()
-    const currentUser = useSelector(state => state.userInfo.user)
-
+    const [change, setChange] = useState(false)
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     // Submits a new comment
-    const HandleSubmit = (e) => {
+    const HandleSubmit = () => {
         let commentText = document.querySelector("#postingComment")
         fetch(`http://localhost:4000/comments/${id}`, {
             method: 'post',
@@ -28,21 +30,22 @@ const Comments = ({id}) => {
         })
         .then(response => {
             if(response.ok) {
-                setComments(comments)
+                console.log("OK 200")
+                setChange(!change)
             }
         })
-        handleClose()
+        
     }
-
 
     // Fetch all the comments for this post, and save them in the comments state
     useEffect(() => {
+        console.log("fetching comments")
         fetch(`http://localhost:4000/comments/${id}`, {mode:'cors'})
         .then(response => response.json())
         .then(data => {
             setComments(data.results)
         })
-    }, [])
+    }, [change])
 
     return(
         <>
@@ -59,11 +62,11 @@ const Comments = ({id}) => {
                 <Button variant="primary" onClick={HandleSubmit}>
                     Post Comment
                 </Button>
-                <div>
+                
                     {comments ? comments.map((comment, i) => {
-                        return <Comment comment={comment} key={i} comments={comments} setComments={setComments}/>
-                    }) : <p>no comments yet...</p>}
-                </div>
+                        return <Comment comment={comment} key={i} comments={comments} setComments={setComments} change={change} setChange={setChange} />
+                    }) :  <p>no comments yet...</p>}
+                
             </Modal.Body>
         </Modal>
         </>

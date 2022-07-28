@@ -16,5 +16,5 @@ To DO:
 2. set api route to environment variable.
 3. ability to delete users
 4. Add like post functionality - done
-5. delete/edit comments - Bug with deleteing comments with transtition
+5. delete/edit comments - Bug with deleteing comments with transtition  
 6. Fix timestamps to not be ugly - done
