@@ -5,20 +5,45 @@ const Comment = (props) => {
     const {comment, comments, change, setChange} = props
     const currentUser = useSelector(state => state.userInfo.user)
 
-    // Edit the comment
+    // Handles showing and hiding the edit textbox for a comment
     const handleEdit = () => {
-        /*
-        console.log(comments)
-        let copy = comments.splice(comment, 1)
-        console.log(copy)
-        */
-       let parentElement = document.getElementById(`${comment._id}`)
-       let textBoxEditor = parentElement.querySelector(".editBox")
-       let commentText = parentElement.querySelector("#cardText")
-       textBoxEditor.style.display = 'block'
-       commentText.style.display = 'none'
+        let parentElement = document.getElementById(`${comment._id}`)
+        let editForm = parentElement.querySelector(".EditForm")
+        let commentText = parentElement.querySelector("#cardText")
+        if(commentText.style.display !== 'none') {
+            editForm.style.display = 'block'
+            commentText.style.display = 'none'
+       } else {
+            editForm.style.display = 'none'
+            commentText.style.display = 'block'
+       }
+    }
 
-
+    // Save any edits made
+    const handleSaveEdit = () => {
+        let parentElement = document.getElementById(`${comment._id}`)
+        let editForm = parentElement.querySelector(".EditForm")
+        let commentText = parentElement.querySelector("#cardText")
+        let textBoxEditor = parentElement.querySelector(".editBox")
+        console.log(textBoxEditor.value)
+        fetch(`http://localhost:4000/comments/edit/${comment._id}`, {
+            method: 'post',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...comment,
+                payload: {
+                    comment: textBoxEditor.value
+                }
+            })
+        })
+        .then(response => {
+            editForm.style.display = 'none'
+            commentText.style.display = 'block'
+            commentText.innerText = textBoxEditor.value
+        })
     }
 
     // Delete the comment
@@ -38,10 +63,11 @@ const Comment = (props) => {
     return(
         <Card id={comment._id}>
             <Card.Title>{comment.author.username} at {comment.date_readable}</Card.Title>
-            <Form>
-                <Form.Control as='textarea' className="editBox" rows={2}>{comment.comment}</Form.Control>
+            <Form className="EditForm">
+                <Form.Control as='textarea' className="editBox" rows={2} defaultValue={comment.comment}></Form.Control>
                 <Form.Group>
-                    <Button variant='primary' size='sm'></Button>
+                    <Button variant='primary' size='sm' onClick={handleSaveEdit}>Save</Button>
+                    <Button variant='danger' size='sm' onClick={handleEdit}>Cancel</Button>
                 </Form.Group>
             </Form>
             
@@ -51,7 +77,8 @@ const Comment = (props) => {
                     <p className="fauxLink" onClick={handleEdit}> edit </p> 
                     <p> - </p> 
                     <p id="commentDelete" className="fauxLink" onClick={handleDelete}> delete </p>
-                </Card.Footer>) : (<></>)}
+                </Card.Footer>) : (<></>)
+            }
         </Card>
     )
 }

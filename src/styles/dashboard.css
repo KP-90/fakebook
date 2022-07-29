@@ -77,6 +77,6 @@ textarea {
     transition: 0.5s linear;
 }
 
-.editBox { 
+.EditForm { 
     display: none;
 }

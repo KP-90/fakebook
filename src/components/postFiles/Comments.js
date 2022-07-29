@@ -64,7 +64,7 @@ const Comments = ({id}) => {
                 </Button>
                 
                     {comments ? comments.map((comment, i) => {
-                        return <Comment comment={comment} key={i} comments={comments} setComments={setComments} change={change} setChange={setChange} />
+                        return <Comment comment={comment} key={comment._id} comments={comments} setComments={setComments} change={change} setChange={setChange} />
                     }) :  <p>no comments yet...</p>}
                 
             </Modal.Body>
