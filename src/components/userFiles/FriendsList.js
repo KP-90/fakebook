@@ -19,10 +19,8 @@ const FriendList = ({friends}) => {
             })
         } else {
             return <p>Theres nothing here.</p>
-        }
-        
+        }   
     }
-
 
     return(
         <>

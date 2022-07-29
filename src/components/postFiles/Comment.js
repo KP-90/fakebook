@@ -2,7 +2,7 @@ import { Button, Card, Form } from "react-bootstrap"
 import { useSelector } from "react-redux"
 
 const Comment = (props) => {
-    const {comment, comments, change, setChange} = props
+    const {comment, change, setChange} = props
     const currentUser = useSelector(state => state.userInfo.user)
 
     // Handles showing and hiding the edit textbox for a comment

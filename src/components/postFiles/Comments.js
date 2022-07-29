@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {  Button, Form, Modal } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux";
-import { changeComments } from "../userSlice";
+import { useSelector } from "react-redux";
 
 import Comment from "./Comment";
 
@@ -45,7 +44,7 @@ const Comments = ({id}) => {
         .then(data => {
             setComments(data.results)
         })
-    }, [change])
+    }, [change, id])
 
     return(
         <>
@@ -63,7 +62,7 @@ const Comments = ({id}) => {
                     Post Comment
                 </Button>
                 
-                    {comments ? comments.map((comment, i) => {
+                    {comments && (comments.length > 0) ? comments.map((comment, i) => {
                         return <Comment comment={comment} key={comment._id} comments={comments} setComments={setComments} change={change} setChange={setChange} />
                     }) :  <p>no comments yet...</p>}
                 

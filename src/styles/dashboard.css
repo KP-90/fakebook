@@ -80,3 +80,8 @@ textarea {
 .EditForm { 
     display: none;
 }
+
+.pending-list {
+    display: flex;
+    justify-content: space-between;
+}
