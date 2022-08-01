@@ -1,0 +1,44 @@
+textarea {
+    padding: 10px;
+}
+
+.timeline {
+    margin: auto;
+    justify-self: center;
+    width: 80%;
+    max-width: 800px;
+}
+
+.card {
+    margin-top: 5px;
+    text-align: start;
+}
+
+.icon:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.likeBtn {
+    font-size: 1.5rem;
+}
+.likeBtn:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.likeBtnLiked {
+    font-size: 1.5rem;
+    color: blue;
+}
+
+.likeBtnLiked:hover {
+    cursor: pointer;
+    color: black
+}
+
+.postInfo {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}

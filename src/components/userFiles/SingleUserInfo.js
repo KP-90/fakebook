@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap"
 import { changeUser } from "../userSlice"
 import '../../styles/userPage.css'
 import FriendList from "./FriendsList"
+import Timeline from "../postFiles/Timeline"
 const async = require('async')
 
 const SingleUser = () => {
@@ -16,6 +17,7 @@ const SingleUser = () => {
     const [loading, setLoading] = useState(true)
     const [stateChange, setChange] = useState(false)
     const [targetUser, setUser] = useState()
+    const [userPosts, setPosts] = useState()
     const { id } = useParams()
     const currentUser = useSelector(state => state.userInfo.user)
     
@@ -30,6 +32,7 @@ const SingleUser = () => {
             fetch(`http://localhost:4000/user/${id}`, {mode:'cors',})
             .then(response => response.json())
             .then(data => {
+                setPosts(data.posts)
                 setUser(data.user)
                 setLoading(false)
             })
@@ -188,6 +191,15 @@ const SingleUser = () => {
             <p>They have <FriendList friends={targetUser.friends} /></p>
             <p>and {targetUser.pending_friends.length} pending requests</p>
             <ButtonSection />
+            <div className="container posts">
+                <h4>Posts by this user</h4>
+                {userPosts.length > 0 ? (
+                    <Timeline allPosts={userPosts} /> 
+                ) : (
+                    <p>No posts yet.</p>
+                )}
+                   
+            </div>
         </div>
     )
     }
