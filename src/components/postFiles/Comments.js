@@ -38,7 +38,6 @@ const Comments = ({id}) => {
 
     // Fetch all the comments for this post, and save them in the comments state
     useEffect(() => {
-        console.log("fetching comments")
         fetch(`http://localhost:4000/comments/${id}`, {mode:'cors'})
         .then(response => response.json())
         .then(data => {

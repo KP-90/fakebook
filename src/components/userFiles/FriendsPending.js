@@ -2,13 +2,13 @@ import { useState } from "react"
 import { Modal, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { changeUser } from "../userSlice"
+import '../../styles/userPage.css'
 const async = require('async')
 
-const FriendsPending = () => {
+const FriendsPending = ({stateChange, setChange}) => {
 
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.userInfo.user)
-    const [stateChange, setChange] = useState(false)
 
     /* Modal Stuff */
     const [show, setShow] = useState(false);
@@ -17,7 +17,7 @@ const FriendsPending = () => {
     /* end modal stuff */
 
     const addFriend = (e) => {
-        let index = e.target.id
+        let index = e.target.parentNode.id
         let targetFriend = currentUser.pending_friends[index]
         let pending_list = [...currentUser.pending_friends]
         let friends_list_copy = [...currentUser.friends]
@@ -54,6 +54,7 @@ const FriendsPending = () => {
                 )
                 .then(response => response.json())
                 .then(data => {
+                    console.log("OK :", data)
                 })
             }
         ], function(err, result) {
@@ -66,7 +67,8 @@ const FriendsPending = () => {
     const declineFriend = (e) => {
         console.log("DECLINE")
         // Remove friends id from the current user pending list
-        let index = e.target.id
+        let index = e.target.parentNode.id
+        console.log(index)
         let pending_list = [...currentUser.pending_friends]
         pending_list.splice(index, 1)
         fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
@@ -76,18 +78,21 @@ const FriendsPending = () => {
             body: JSON.stringify({...currentUser, payload: {pending_friends: pending_list}})
             }
         )
-        .then(response => response.json())
-        .then(data => {
-            setChange(!stateChange)
+        .then(response => {
+            if(response.ok) {
+                console.log("RESPONSE OK")
+                setChange(!stateChange)
+            }
         })
+
     }
 
     let PendingFriends = () => {    
         if (currentUser.pending_friends.length > 0) {
             return currentUser.pending_friends.map((friend, i) => {
-                return <div key={'friend' + i} className='pending-list'>
+                return <div key={'friend' + i} className='pending-list' >
                     <p>{friend.username} wants to be friends</p>
-                    <div>
+                    <div id={i}>
                         <Button variant="success" size='sm' onClick={addFriend} >Accept</Button>
                         <Button variant="danger" size='sm' onClick={declineFriend} >Decline</Button>
                     </div>

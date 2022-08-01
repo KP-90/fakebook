@@ -55,6 +55,27 @@ const  Login = ({setToken}) => {
         })
     }
 
+    const handleTest = (e) => {
+        console.log("Logging in guest...")
+        e.preventDefault()
+        fetch("http://localhost:4000/login", {
+            method: "POST",
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username: "test",
+                password: "testing"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.token) {
+                dispatch(changeToken(data))
+                setToken(data)
+            }
+        })
+    }
+
     return(
         <div className='container center'>
             <h2>Please Log in</h2>
@@ -82,6 +103,7 @@ const  Login = ({setToken}) => {
                     sign up for your own account whenever you want.
                 </p>
                 <Button varient='primary' onClick={handleGuest}>Guest Log In</Button>
+                <Button variant='info' onClick={handleTest}>Test log in</Button>
             </div>
         </div>
         
