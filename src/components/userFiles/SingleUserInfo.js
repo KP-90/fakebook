@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Button } from "react-bootstrap"
 import { changeUser } from "../userSlice"
 import '../../styles/userPage.css'
+import FriendList from "./FriendsList"
 const async = require('async')
 
 const SingleUser = () => {
@@ -37,9 +38,10 @@ const SingleUser = () => {
 
     // Add Friend button, should add the current user id to the pending friends array of the target user.
     const AddFriend = () => {
+
+        // if target user is already in the current user pending_friends array, go ahead and simulate accepting the friend request
         if(currentUser.pending_friends.some(e => e._id === targetUser._id)) {
-            console.log("USER ALREADY IN PENDING")
-            // Target already in pending friends? Go ahead and simulate accepting the friend request
+            // Will need to make sure both users are no longer in each others pending array, and add them both to each others friends array
             let index = currentUser.pending_friends.map(person => person._id).indexOf(targetUser._id)
             let targetFriend = currentUser.pending_friends[index]
             let pending_list = [...currentUser.pending_friends]
@@ -80,12 +82,13 @@ const SingleUser = () => {
                     })
                 }
             ], function(err, result) {
+                // if theres an error, log it to the console, otherwise notifty app of state change
                 if(err) {console.log(err)}
                 setChange(!stateChange)
             })
         } 
         else {
-            // Else just add to the pending list
+            // Not in any pending array? just add to the pending array 
             let updated_data = targetUser.pending_friends
             updated_data.push(currentUser._id)
             fetch(`http://localhost:4000/user/update/${targetUser.id}`, {
@@ -103,18 +106,20 @@ const SingleUser = () => {
         }
     }
     
-    // Checks where the current user is (i.e.  pending_friends, or friends) and removes them from the array.
+    // Checks where the current user is located (i.e.  pending_friends, or friends array) and removes them from the array.
     const RemoveFriend = () => {
         let updated_data
         let updated_field
         let index
-        let currentUserFriends = [...currentUser.friends]   
+        let currentUserFriends = [...currentUser.friends]
+        // if either person is in one of the pending arrays. If so, set variables to appropiate values
         if(targetUser.pending_friends.includes(currentUser._id) || currentUser.pending_friends.some(e => e._id === targetUser._id)) {
             updated_field = "pending_friends"
             updated_data = targetUser.pending_friends
             index = updated_data.indexOf(currentUser._id)
             updated_data.splice(index, 1)
         } 
+        // or if either user is in the friends array. If so, set variables to appropiate values
         else if(targetUser.friends.some(e => e._id === currentUser._id) || currentUserFriends.some(e => e._id === targetUser._id)) {
             updated_field = "friends"
             // Remove from targets friends array
@@ -180,7 +185,7 @@ const SingleUser = () => {
             <h3>or should we say...</h3>
             <h1>"<strong>{targetUser.username}</strong>"</h1>
 
-            <p>They have {targetUser.friends.length} friends.</p>
+            <p>They have <FriendList friends={targetUser.friends} /></p>
             <p>and {targetUser.pending_friends.length} pending requests</p>
             <ButtonSection />
         </div>
