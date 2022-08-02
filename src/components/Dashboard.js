@@ -58,7 +58,7 @@ const Dashboard = () => {
                 </div>
                 <Timeline allPosts={allPosts}/>
             </div>
-            
+            <div className="blank"></div>
         </div>
         
     )

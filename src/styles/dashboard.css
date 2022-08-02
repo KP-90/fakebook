@@ -2,7 +2,7 @@
     width: 100vw;
     height: 80vh;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr 1fr;
     border-top: 1px solid blue;
 }
 
@@ -12,7 +12,6 @@ textarea {
 
 .timeline {
     justify-self: center;
-    width: 80%;
     max-width: 800px;
 }
 
@@ -27,6 +26,21 @@ textarea {
     padding: 5px;
 }
 
+@media only screen and (max-width: 600px) {
+    .dashboard {
+        display: block;
+    }
+    .side-panel {
+        display: none;
+    }
+    #blank {
+        display: none;
+    }
+}
+
+.blank {
+    grid-column: 3;
+}
 .card {
     margin-top: 5px;
     text-align: start;

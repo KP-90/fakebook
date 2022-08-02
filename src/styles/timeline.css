@@ -5,7 +5,6 @@ textarea {
 .timeline {
     margin: auto;
     justify-self: center;
-    width: 80%;
     max-width: 800px;
 }
 

@@ -30,7 +30,7 @@ const Header = ({setToken}) => {
     return(
         <Navbar bg='light' expand="lg">
             <Container>
-                <Navbar.Brand><Link to="/" className="title"><h1>Fakebook</h1></Link></Navbar.Brand>
+                <Navbar.Brand id="navbarBrand"><Link to="/" className="title"><h1>Fakebook</h1></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='me-auto justify-content-end'>

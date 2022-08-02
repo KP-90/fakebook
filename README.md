@@ -18,5 +18,5 @@ To DO:
 4. Add like post functionality - done
 5. delete/edit comments - done  
 6. Fix timestamps to not be ugly - done
-7. Posts should show up on user profiles
-8. Pending friends list has some bugs
+7. Posts should show up on user profiles - done
+8. Pending friends list has some bugs - done(I think)
