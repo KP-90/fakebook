@@ -76,6 +76,38 @@ const  Login = ({setToken}) => {
         })
     }
 
+    const handleCreate = (e) => {
+        let first = 'test1'
+        let last = ''
+        let username = 'test1'
+        let password = 'test'  
+        let confirm_pass = 'test'
+
+        fetch('http://localhost:4000/user', {
+            method: 'POST', 
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                first: first,
+                last: last,
+                username: username,
+                password: password,
+                confirm_pass: confirm_pass
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("DATA: ", data)
+                if(!data.ok) {
+                    console.log("ERRORS IN SIGNUP")
+                }
+                else{
+                    window.alert("User succesfully created. \nPlease attempt to log in now.\n")
+                }
+            })
+    }
+    
+
     return(
         <div className='container center'>
             <h2>Please Log in</h2>
@@ -104,6 +136,7 @@ const  Login = ({setToken}) => {
                 </p>
                 <Button varient='primary' onClick={handleGuest}>Guest Log In</Button>
                 <Button variant='info' onClick={handleTest}>Test log in</Button>
+                <Button variant='secondary' onClick={handleCreate}>Create user</Button>
             </div>
         </div>
         

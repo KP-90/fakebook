@@ -14,7 +14,7 @@ To DO:
 
 1. Hash passwords
 2. set api route to environment variable.
-3. ability to delete users
+3. ability to delete users - done
 4. Add like post functionality - done
 5. delete/edit comments - done  
 6. Fix timestamps to not be ugly - done

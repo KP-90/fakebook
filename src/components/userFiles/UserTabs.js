@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
@@ -6,13 +6,22 @@ import Tabs from 'react-bootstrap/Tabs';
 import Timeline from '../postFiles/Timeline';
 import { changeToken, changeUser } from '../userSlice';
 import { useNavigate } from 'react-router';
-import useToken from '../../hooks/useToken';
 
 const UserTabs = (props) => {
 
     const {userPosts, currentUser, setToken} = props
     const nav = useNavigate()
     const dispatch = useDispatch()
+    const [likedPosts, setLikedPosts] = useState()
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/liked/${currentUser._id}`, {mode: 'cors'})
+        .then(response => response.json())
+        .then(data => {
+            console.log("LKiked post data", data)
+            setLikedPosts(data.posts)
+        })
+    }, [])
     
     // Modal stuff //
     const [show, setShow] = useState(false);
@@ -38,6 +47,14 @@ const UserTabs = (props) => {
         })
     }
 
+    let LikedPostsSection = () => {
+        if(likedPosts && likedPosts.length > 0) {
+            return <Timeline allPosts={likedPosts} />
+        } else {
+            return <p>No liked posts yet</p>
+        }
+    }
+
     return(
         <div>
             <Tabs
@@ -53,7 +70,9 @@ const UserTabs = (props) => {
                     </div>
                 </Tab>
                 <Tab eventKey="liked" title="Liked">
-                    <p>This is where the liked posts will go</p>
+                    <h4>Liked posts by this user</h4>
+                    <LikedPostsSection />
+                    
                 </Tab>
 
                 
