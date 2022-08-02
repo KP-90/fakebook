@@ -24,10 +24,11 @@ function App() {
   // Fetch the logged in user so we know when we can start rendering 
   useEffect(() => {
     if(token) {
+      console.log(token)
       fetch('http://localhost:4000/me', {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
       .then(response => response.json())
       .then(data => {
-        dispatch(changeUser(data.user))
+        dispatch(changeUser(data.user)) 
       })
     }
   }, [token])
@@ -44,7 +45,7 @@ function App() {
         <Header setToken={setToken}/>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/user/me" element={<Userinfo />} />
+          <Route path="/user/me" element={<Userinfo setToken={setToken}/>} />
           <Route path="/user/:id" element={<SingleUser />} />
         </Routes>
       </BrowserRouter>

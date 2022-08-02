@@ -1,15 +1,16 @@
 // This is the page for the CURRENT LOGGED IN user
+
 import FriendList from "./FriendsList"
 import FriendsPending from "./FriendsPending"
 import Post from "../postFiles/Post"
-import Timeline from "../postFiles/Timeline"
+import UserTabs from "./UserTabs"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { changeUser } from "../userSlice"
 import useToken from "../../hooks/useToken"
 import '../../styles/userPage.css'
 
-const Userinfo = () => {
+const Userinfo = (props) => {
 
     const {token, setToken} = useToken()
     const dispatch = useDispatch()
@@ -27,17 +28,6 @@ const Userinfo = () => {
         })
     }, [stateChange])
 
-    let PostsSection = () => {
-        if(userPosts && userPosts.length > 0) {
-            return userPosts.map((post, i) => {
-                return <Post key={i} info={post} stateChange={stateChange} setChange={setChange} />
-            })
-        }
-        else {
-            return <p>This user has no posts yet</p>
-        }
-    }
-
     return(
         <div>
             <h2>Hello {currentUser.first}</h2>
@@ -50,14 +40,7 @@ const Userinfo = () => {
             ) : (
                 <p>No pending requests.</p>
             )}
-            <div className="container posts">
-                <h4>Posts by this user</h4>
-                <Timeline allPosts={userPosts} />    
-            </div>
-            
-            
-
-
+            <UserTabs userPosts={userPosts} currentUser={currentUser} setToken={props.setToken}/>
         </div>
     )
 }

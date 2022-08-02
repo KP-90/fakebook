@@ -11,3 +11,13 @@
     border-bottom: 1px solid black;
     margin: 5px;
 }
+
+.danger-section {
+    margin: 2em;
+    border: 10px solid rgba(230, 1, 1, 0.945);
+    padding: 2em;
+}
+
+.danger-section > * {
+    margin: 2.5em 0;
+}
