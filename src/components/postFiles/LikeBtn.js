@@ -57,7 +57,11 @@ const LikeBtn = (props) => {
     }
 
     return(
-        <Button />
+        <div style={{display: 'flex'}}>
+            <p style={{position: 'relative', top: "3px"}}>{info.likes.length} likes</p>
+            <Button />
+        </div>
+        
     )
 }
 
