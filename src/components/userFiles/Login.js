@@ -9,6 +9,7 @@ import Signup from './Signup';
 const  Login = ({setToken}) => {
 
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState()
 
     // takes username and password then sends to api for verification. Saves a token on success
     const handleSubmit = (e) => {
@@ -26,9 +27,13 @@ const  Login = ({setToken}) => {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             if(data.token) {
                 dispatch(changeToken(data))
                 setToken(data)
+            }
+            else {
+                setErrors(data)
             }
         })
     }
@@ -42,7 +47,7 @@ const  Login = ({setToken}) => {
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                username: "Guest",
+                username: "guest",
                 password: "Guest"
             })
         })
@@ -107,6 +112,18 @@ const  Login = ({setToken}) => {
             })
     }
     
+    const Errors = () => {
+        if(errors) {
+            console.log("Error function: ", errors.errors)
+            return(
+            <div>
+                {errors.errors.map((err) => {
+                    return <li>{err.msg}</li>
+                })}
+            </div>)
+        }
+        else{return}
+    }
 
     return(
         <div className='container center'>
@@ -125,6 +142,7 @@ const  Login = ({setToken}) => {
                     <p>or</p>
                     <Signup />
                 </div>
+                <Errors />
                 
 
             </Form>

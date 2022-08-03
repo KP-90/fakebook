@@ -20,3 +20,6 @@ To DO:
 6. Fix timestamps to not be ugly - done
 7. Posts should show up on user profiles - done
 8. Pending friends list has some bugs - done(I think)
+
+
+error adding in errors to the login page.

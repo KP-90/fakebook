@@ -4,13 +4,16 @@ import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "react-bootstrap"
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import { changeUser } from "../userSlice"
 import '../../styles/userPage.css'
 import FriendList from "./FriendsList"
-import Timeline from "../postFiles/Timeline"
+import Timeline from "../postFiles/Timeline";
+
 const async = require('async')
 
-const SingleUser = () => {
+const SingleUser = (props) => {
 
     const nav = useNavigate()
     const dispatch = useDispatch()
@@ -18,6 +21,7 @@ const SingleUser = () => {
     const [stateChange, setChange] = useState(false)
     const [targetUser, setUser] = useState()
     const [userPosts, setPosts] = useState()
+    const [likedPosts, setLikedPosts] = useState()          
     const { id } = useParams()
     const currentUser = useSelector(state => state.userInfo.user)
     
@@ -37,6 +41,11 @@ const SingleUser = () => {
                 setLoading(false)
             })
         }
+        fetch(`${process.env.REACT_APP_BASE_URL}/liked/${id}`, {mode: 'cors'})
+        .then(response => response.json())
+        .then(data => {
+            setLikedPosts(data.posts)
+        })
     }, [stateChange])
 
     // Add Friend button, should add the current user id to the pending friends array of the target user.
@@ -180,6 +189,14 @@ const SingleUser = () => {
         }
     }
 
+    let LikedPostsSection = () => {
+        if(likedPosts && likedPosts.length > 0) {
+            return <Timeline allPosts={likedPosts} />
+        } else {
+            return <p>No liked posts yet</p>
+        }
+    }
+
     if(!loading) {
     return(
         <div>
@@ -190,16 +207,28 @@ const SingleUser = () => {
 
             <p>They have <FriendList friends={targetUser.friends} /></p>
             <p>and {targetUser.pending_friends.length} pending requests</p>
+            
             <ButtonSection />
-            <div className="container posts">
-                <h4>Posts by this user</h4>
-                {userPosts.length > 0 ? (
-                    <Timeline allPosts={userPosts} /> 
-                ) : (
-                    <p>No posts yet.</p>
-                )}
-                   
-            </div>
+            
+            <Tabs
+                defaultActiveKey="posts"
+                id="fill-tabs"
+                className="mb-3"
+                fill
+            >
+                <Tab eventKey="posts" title="Posts">
+                    <div className="container posts">
+                        <h4>Posts by this user</h4>
+                        <Timeline allPosts={userPosts} />    
+                    </div>
+                </Tab>
+
+                <Tab eventKey="liked" title="Liked">
+                    <h4>Liked posts by this user</h4>
+                    <LikedPostsSection />
+                    
+                </Tab>
+            </Tabs>
         </div>
     )
     }

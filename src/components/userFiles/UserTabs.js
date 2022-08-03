@@ -18,7 +18,6 @@ const UserTabs = (props) => {
         fetch(`${process.env.REACT_APP_BASE_URL}/liked/${currentUser._id}`, {mode: 'cors'})
         .then(response => response.json())
         .then(data => {
-            console.log("LKiked post data", data)
             setLikedPosts(data.posts)
         })
     }, [])
@@ -30,7 +29,6 @@ const UserTabs = (props) => {
     
     // Triggers on button click. Deletes the user upon confirmation
     const handleDelete = () => {
-        console.log("USER_DELETEING_PROCESS INITIATE")
         fetch(`${process.env.REACT_APP_BASE_URL}/user/delete/${currentUser._id}`, {
             method: 'post',
             mode: 'cors',
@@ -38,7 +36,6 @@ const UserTabs = (props) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             localStorage.removeItem('token')
             dispatch(changeToken({'token': null}))
             dispatch(changeUser(""))
@@ -75,8 +72,7 @@ const UserTabs = (props) => {
                     
                 </Tab>
 
-                
-                <Tab eventKey="danger" title="Danger">
+                <Tab eventKey="danger" title="Danger" id="dangerSection">
                     <div className='danger-section'>
                         <h4>Warning: Clicking the button below will permanently delete you. None of that Facebook crap where it saves your profile forever in the hidden depths only to 
                             resurface as soon as you log in again. THIS IS PERMANENT!!!
@@ -99,7 +95,6 @@ const UserTabs = (props) => {
                                 </Button>
                             </Modal.Footer>
                         </Modal>
-
                     </div>
                 </Tab>
             </Tabs>

@@ -32,7 +32,7 @@ const Userinfo = (props) => {
         <div>
             <h2>Hello {currentUser.first}</h2>
             <h3>or should we say...</h3>
-            <h1>"<strong>{currentUser.username}</strong>"</h1>
+            <h1>"<strong>{currentUser.display_name}</strong>"</h1>
 
             <p>You have <FriendList friends={currentUser.friends}/>.</p>
             {currentUser.pending_friends.length > 0 ? (

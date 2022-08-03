@@ -35,7 +35,7 @@ const Signup = () => {
             body: JSON.stringify({
                 first: first,
                 last: last,
-                username: username,
+                username: username.toLowerCase(),
                 password: password,
                 confirm_pass: confirm_pass
             })
@@ -75,7 +75,7 @@ const Signup = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Signup</Modal.Title>
                 </Modal.Header>
-                <Form validated={validate} onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <Modal.Body>
                         <Form.Group controlId="first">
                             <Form.Label>First name*</Form.Label>
@@ -84,7 +84,6 @@ const Signup = () => {
                                 type="text"
                                 placeholder="First name"
                             />
-                            <Form.Control.Feedback type="invalid">Give me your name!</Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Last name</Form.Label>
@@ -102,7 +101,6 @@ const Signup = () => {
                                 placeholder="username"
                                 id="username"
                             />
-                            <Form.Control.Feedback type="invalid">Invalid username</Form.Control.Feedback>
                         </Form.Group>       
                         <Form.Group>
                             <Form.Label>Password</Form.Label>

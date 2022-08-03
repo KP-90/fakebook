@@ -24,7 +24,6 @@ function App() {
   // Fetch the logged in user so we know when we can start rendering 
   useEffect(() => {
     if(token) {
-      console.log(token)
       fetch(`${process.env.REACT_APP_BASE_URL}/me`, {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
       .then(response => response.json())
       .then(data => {
@@ -46,7 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/user/me" element={<Userinfo setToken={setToken}/>} />
-          <Route path="/user/:id" element={<SingleUser />} />
+          <Route path="/user/:id" element={<SingleUser setToken={setToken} />} />
         </Routes>
       </BrowserRouter>
       )}
