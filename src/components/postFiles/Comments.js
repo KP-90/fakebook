@@ -17,7 +17,7 @@ const Comments = ({id}) => {
     // Submits a new comment
     const HandleSubmit = () => {
         let commentText = document.querySelector("#postingComment")
-        fetch(`http://localhost:4000/comments/${id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/comments/${id}`, {
             method: 'post',
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
@@ -38,7 +38,7 @@ const Comments = ({id}) => {
 
     // Fetch all the comments for this post, and save them in the comments state
     useEffect(() => {
-        fetch(`http://localhost:4000/comments/${id}`, {mode:'cors'})
+        fetch(`${process.env.REACT_APP_BASE_URL}/comments/${id}`, {mode:'cors'})
         .then(response => response.json())
         .then(data => {
             setComments(data.results)

@@ -14,7 +14,7 @@ const EditPost = (props) => {
     const handleShow = () => setShow(true);
 
     const HandleSubmit = () => {
-        fetch(`http://localhost:4000/edit/${info._id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/edit/${info._id}`, {
             method: 'post', 
             mode: 'cors',
             headers: {

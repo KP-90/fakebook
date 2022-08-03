@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     if(token) {
       console.log(token)
-      fetch('http://localhost:4000/me', {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
+      fetch(`${process.env.REACT_APP_BASE_URL}/me`, {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
       .then(response => response.json())
       .then(data => {
         dispatch(changeUser(data.user)) 

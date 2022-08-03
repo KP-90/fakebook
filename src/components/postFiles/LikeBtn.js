@@ -10,7 +10,7 @@ const LikeBtn = (props) => {
     const handleLike = () => {
         let likesCopy = info.likes
         likesCopy.push(currentUser._id)
-        fetch(`http://localhost:4000/edit/${info._id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/edit/${info._id}`, {
             method: 'post', 
             mode: 'cors',
             headers: {
@@ -31,7 +31,7 @@ const LikeBtn = (props) => {
         let likesCopy = info.likes
         let index = likesCopy.indexOf(currentUser._id)
         likesCopy.splice(index, 1)
-        fetch(`http://localhost:4000/edit/${info._id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/edit/${info._id}`, {
             method: 'post', 
             mode: 'cors',
             headers: {

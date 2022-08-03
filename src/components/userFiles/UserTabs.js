@@ -15,7 +15,7 @@ const UserTabs = (props) => {
     const [likedPosts, setLikedPosts] = useState()
 
     useEffect(() => {
-        fetch(`http://localhost:4000/liked/${currentUser._id}`, {mode: 'cors'})
+        fetch(`${process.env.REACT_APP_BASE_URL}/liked/${currentUser._id}`, {mode: 'cors'})
         .then(response => response.json())
         .then(data => {
             console.log("LKiked post data", data)
@@ -31,7 +31,7 @@ const UserTabs = (props) => {
     // Triggers on button click. Deletes the user upon confirmation
     const handleDelete = () => {
         console.log("USER_DELETEING_PROCESS INITIATE")
-        fetch(`http://localhost:4000/user/delete/${currentUser._id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/user/delete/${currentUser._id}`, {
             method: 'post',
             mode: 'cors',
             headers: {'Content-Type': 'application/json'}

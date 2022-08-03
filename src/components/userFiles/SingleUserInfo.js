@@ -29,7 +29,7 @@ const SingleUser = () => {
         }
         // Get info for the individual user
         if(!targetUser || targetUser._id !== id) {
-            fetch(`http://localhost:4000/user/${id}`, {mode:'cors',})
+            fetch(`${process.env.REACT_APP_BASE_URL}/user/${id}`, {mode:'cors',})
             .then(response => response.json())
             .then(data => {
                 setPosts(data.posts)
@@ -59,7 +59,7 @@ const SingleUser = () => {
             async.parallel([
                 // Update the current users pending and friends list by moving the IDs from one array to the other.
                 function(callback) {
-                    fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
+                    fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -73,7 +73,7 @@ const SingleUser = () => {
                 },
                 // Update the Target users friends list
                 function(callback) {
-                    fetch(`http://localhost:4000/user/update/${targetFriend._id}`, {method: 'post', mode: 'cors', 
+                    fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${targetFriend._id}`, {method: 'post', mode: 'cors', 
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -94,7 +94,7 @@ const SingleUser = () => {
             // Not in any pending array? just add to the pending array 
             let updated_data = targetUser.pending_friends
             updated_data.push(currentUser._id)
-            fetch(`http://localhost:4000/user/update/${targetUser.id}`, {
+            fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${targetUser.id}`, {
                 method: 'post', 
                 mode: 'cors', 
                 headers: {
@@ -140,7 +140,7 @@ const SingleUser = () => {
         async.parallel([
             // Remove from target user
             function(callback) {
-                fetch(`http://localhost:4000/user/update/${targetUser.id}`, {method: 'post', mode: 'cors', 
+                fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${targetUser.id}`, {method: 'post', mode: 'cors', 
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -154,7 +154,7 @@ const SingleUser = () => {
 
             // Remove from current user
             function(callback) {
-                fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
+                fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
                     headers: {
                         'Content-Type': 'application/json'
                     },

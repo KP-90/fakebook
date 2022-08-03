@@ -20,7 +20,7 @@ const Userinfo = (props) => {
     const [stateChange, setChange] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:4000/me', {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
+        fetch(`${process.env.REACT_APP_BASE_URL}/me`, {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
         .then(response => response.json())
         .then(data => {
             setPosts(data.posts)

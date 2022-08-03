@@ -11,7 +11,7 @@ const SidePanel = () => {
 
     useEffect(() => { 
         // Fetch all the users
-        fetch("http://localhost:4000/all_users", {mode: 'cors'})
+        fetch(`${process.env.REACT_APP_BASE_URL}/all_users`, {mode: 'cors'})
         .then(response => response.json())
         .then(data => {
             if(data.errors) {

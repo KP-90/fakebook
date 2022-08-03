@@ -26,7 +26,7 @@ const Comment = (props) => {
         let commentText = parentElement.querySelector("#cardText")
         let textBoxEditor = parentElement.querySelector(".editBox")
         console.log(textBoxEditor.value)
-        fetch(`http://localhost:4000/comments/edit/${comment._id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/comments/edit/${comment._id}`, {
             method: 'post',
             mode: 'cors',
             headers: {
@@ -50,7 +50,7 @@ const Comment = (props) => {
     const handleDelete = (e) => {
         if(window.confirm("Are you sure?")) {
             // delete
-            fetch(`http://localhost:4000/comments/delete/${comment._id}`, {method:'post', mode: 'cors'})
+            fetch(`${process.env.REACT_APP_BASE_URL}/comments/delete/${comment._id}`, {method:'post', mode: 'cors'})
             .then(response => {
                 if(response.ok) {
                     // force re-render

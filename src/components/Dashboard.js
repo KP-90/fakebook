@@ -14,7 +14,7 @@ const Dashboard = () => {
     const [allPosts, setAllPosts] = useState()
 
     useEffect(() => {
-        fetch("http://localhost:4000", {mode: 'cors'})
+        fetch(`${process.env.REACT_APP_BASE_URL}`, {mode: 'cors'})
         .then(response => response.json())
         .then(data => {
             setAllPosts(data.results)
@@ -24,7 +24,7 @@ const Dashboard = () => {
     const HandleSubmit = (e) => {
         e.preventDefault()
         let text = document.querySelector("textarea")
-        fetch('http://localhost:4000/submitPost', {
+        fetch(`${process.env.REACT_APP_BASE_URL}/submitPost`, {
             method: 'post', 
             mode: 'cors',
             headers: {

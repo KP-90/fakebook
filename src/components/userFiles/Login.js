@@ -15,7 +15,7 @@ const  Login = ({setToken}) => {
         e.preventDefault()
         let uname = document.querySelector('#uname').value
         let pword = document.querySelector('#pword').value
-        fetch("http://localhost:4000/login", {
+        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
@@ -37,7 +37,7 @@ const  Login = ({setToken}) => {
     const handleGuest = (e) => {
         console.log("Logging in guest...")
         e.preventDefault()
-        fetch("http://localhost:4000/login", {
+        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
@@ -58,7 +58,7 @@ const  Login = ({setToken}) => {
     const handleTest = (e) => {
         console.log("Logging in guest...")
         e.preventDefault()
-        fetch("http://localhost:4000/login", {
+        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
@@ -83,7 +83,7 @@ const  Login = ({setToken}) => {
         let password = 'test'  
         let confirm_pass = 'test'
 
-        fetch('http://localhost:4000/user', {
+        fetch(`${process.env.REACT_APP_BASE_URL}/user`, {
             method: 'POST', 
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},

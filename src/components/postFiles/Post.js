@@ -22,7 +22,7 @@ const Post = (props) => {
     // Delete post function
     const HandleDelete = () => {
         if(window.confirm("Are you sure you want to delete this post?\n")) {
-            fetch(`http://localhost:4000/delete/${info._id}`, {
+            fetch(`${process.env.REACT_APP_BASE_URL}/delete/${info._id}`, {
                 method: 'post',
                 mode: 'cors'})
             .then(response => {

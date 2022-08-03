@@ -28,7 +28,7 @@ const Signup = () => {
         let password = document.querySelector("#password").value   
         let confirm_pass = document.querySelector("#confirm_password").value
 
-        fetch('http://localhost:4000/user', {
+        fetch(`${process.env.REACT_APP_BASE_URL}/user`, {
             method: 'POST', 
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
@@ -53,7 +53,6 @@ const Signup = () => {
                 }
             })
         }
-        //Do submit things - http://localhost:4000/user
     }
 
     const Errors = () => {

@@ -31,7 +31,7 @@ const FriendsPending = ({stateChange, setChange}) => {
         async.parallel([
             // Update the current users pending and friends list by moving the IDs from one array to the other.
             function(callback) {
-                fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
+                fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -45,7 +45,7 @@ const FriendsPending = ({stateChange, setChange}) => {
             },
             // Update the Target users friends list
             function(callback) {
-                fetch(`http://localhost:4000/user/update/${targetFriend._id}`, {method: 'post', mode: 'cors', 
+                fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${targetFriend._id}`, {method: 'post', mode: 'cors', 
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -71,7 +71,7 @@ const FriendsPending = ({stateChange, setChange}) => {
         console.log(index)
         let pending_list = [...currentUser.pending_friends]
         pending_list.splice(index, 1)
-        fetch(`http://localhost:4000/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
+        fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
             headers: {
                 'Content-Type': 'application/json'
             },
