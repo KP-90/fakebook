@@ -23,7 +23,7 @@ function App() {
 
   // Fetch the logged in user so we know when we can start rendering 
   useEffect(() => {
-    if(token) {
+    if(token) {           
       fetch(`${process.env.REACT_APP_BASE_URL}/me`, {mode: 'cors', headers: {'authorization': `Bearer ${token}`}})
       .then(response => response.json())
       .then(data => {

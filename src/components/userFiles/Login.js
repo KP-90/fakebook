@@ -29,6 +29,7 @@ const  Login = ({setToken}) => {
         .then(data => {
             console.log(data)
             if(data.token) {
+                console.log(data)
                 dispatch(changeToken(data))
                 setToken(data)
             }
@@ -66,7 +67,8 @@ const  Login = ({setToken}) => {
         fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
             mode: 'cors',
-            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*',},
             body: JSON.stringify({
                 username: "test",
                 password: "testing"
@@ -113,14 +115,21 @@ const  Login = ({setToken}) => {
     }
     
     const Errors = () => {
-        if(errors) {
-            console.log("Error function: ", errors.errors)
+        if(errors && errors.length > 1) {
+            console.log("Error function: ", errors)
             return(
             <div>
-                {errors.errors.map((err) => {
+                {errors.map((err) => {
                     return <li>{err.msg}</li>
                 })}
             </div>)
+        }
+        else if(errors) {
+            return(
+                <div>
+                    <li>{errors.msg}</li>
+                </div>
+            )
         }
         else{return}
     }
@@ -137,12 +146,13 @@ const  Login = ({setToken}) => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type='password' required/>
                 </Form.Group>
+                <Errors />
                 <div>
                     <Button type="submit">Submit</Button>
                     <p>or</p>
                     <Signup />
                 </div>
-                <Errors />
+                
                 
 
             </Form>
