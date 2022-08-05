@@ -42,9 +42,9 @@ const  Login = ({setToken}) => {
     // Guest log on. import './App.css';
     const handleGuest = (e) => {
         console.log("Logging in guest...")
-        console.log("Calling upon :", process.env.REACT_APP_BASE_URL)
+        console.log("Calling upon : https://stark-falls-82245.herokuapp.com")
         e.preventDefault()
-        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
+        fetch(`https://stark-falls-82245.herokuapp.com/login`, {
             method: "POST",
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
