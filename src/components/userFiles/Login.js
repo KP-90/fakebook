@@ -42,6 +42,7 @@ const  Login = ({setToken}) => {
     // Guest log on. import './App.css';
     const handleGuest = (e) => {
         console.log("Logging in guest...")
+        console.log("Calling upon :", process.env.REACT_APP_BASE_URL)
         e.preventDefault()
         fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
