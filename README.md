@@ -2,6 +2,8 @@
 
 ## This is the frontend portion of the app
 
+### Live view - https://mighty-cliffs-46847.herokuapp.com/
+
 the api/backend can be found here - (https://github.com/KP-90/fakebook-api)
 
 
