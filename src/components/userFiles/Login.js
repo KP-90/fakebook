@@ -44,7 +44,7 @@ const  Login = ({setToken}) => {
         console.log("Logging in guest...")
         console.log("Calling upon : https://stark-falls-82245.herokuapp.com")
         e.preventDefault()
-        fetch(`https://stark-falls-82245.herokuapp.com/login`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
             mode: 'cors',
             headers: {'Content-Type': 'application/json'},
