@@ -78,7 +78,13 @@ const UserTabs = (props) => {
                             resurface as soon as you log in again. THIS IS PERMANENT!!!
                         </h4>
                         <h5>You have been warned</h5>
-                        <Button variant='danger' onClick={handleShow}>Delete User</Button>
+                        {currentUser.username === 'guest' ? (
+                            <div>
+                            <Button variant='danger' disabled>Delete User</Button>
+                            <p>*Button disabled for guest account</p>
+                            </div>
+                        ) : <Button variant='danger' onClick={handleShow}>Delete User</Button>}
+                        
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Delete User?</Modal.Title>
