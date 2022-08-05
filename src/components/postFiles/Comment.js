@@ -25,7 +25,6 @@ const Comment = (props) => {
         let editForm = parentElement.querySelector(".EditForm")
         let commentText = parentElement.querySelector("#cardText")
         let textBoxEditor = parentElement.querySelector(".editBox")
-        console.log(textBoxEditor.value)
         fetch(`${process.env.REACT_APP_BASE_URL}/comments/edit/${comment._id}`, {
             method: 'post',
             mode: 'cors',

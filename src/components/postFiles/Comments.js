@@ -29,7 +29,6 @@ const Comments = ({id}) => {
         })
         .then(response => {
             if(response.ok) {
-                console.log("OK 200")
                 setChange(!change)
             }
         })

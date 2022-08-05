@@ -28,7 +28,6 @@ const EditPost = (props) => {
             })
         })
         .then(response => {
-            console.log(response)
             if(response.ok) {
                 handleClose()
                 props.setChange(!props.stateChange)

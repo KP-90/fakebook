@@ -13,10 +13,8 @@ const Signup = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleSubmit = (e) => {
-        console.log("CLICK")
         const form = e.currentTarget
         if(form.checkValidity() === false) {
-            console.log("VALIDATION FAIL")
             e.preventDefault();
             e.stopPropagation();
         }
@@ -42,7 +40,6 @@ const Signup = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log("DATA: ", data)
                 if(!data.ok) {
                     console.log("ERRORS IN SIGNUP")
                     setErrors(data)
@@ -57,7 +54,6 @@ const Signup = () => {
 
     const Errors = () => {
         if(errors) {
-            console.log("Error function: ", errors.errors)
             return(
             <div>
                 {errors.errors.map((err) => {

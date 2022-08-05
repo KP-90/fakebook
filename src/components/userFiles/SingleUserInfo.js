@@ -90,7 +90,7 @@ const SingleUser = (props) => {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log("OK :", data)
+                        
                     })
                 }
             ], function(err, result) {
@@ -143,7 +143,6 @@ const SingleUser = (props) => {
 
             if (selfIndex !== null ) {
                 currentUserFriends.splice(selfIndex, 1)
-                console.log("SPLIVE>>>?," , currentUserFriends)
             }
         }
         async.parallel([
@@ -157,7 +156,7 @@ const SingleUser = (props) => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("data1: ", data)
+
                 })
             },
 
@@ -172,7 +171,6 @@ const SingleUser = (props) => {
                 )
                 .then(response => response.json())
                 .then(data => {
-                    console.log("data2: ", data)
                     dispatch(changeUser(data.info))
                 })
             }

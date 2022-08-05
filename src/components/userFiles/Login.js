@@ -27,9 +27,7 @@ const  Login = ({setToken}) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if(data.token) {
-                console.log(data)
                 dispatch(changeToken(data))
                 setToken(data)
             }
@@ -41,8 +39,6 @@ const  Login = ({setToken}) => {
 
     // Guest log on. import './App.css';
     const handleGuest = (e) => {
-        console.log("Logging in guest...")
-        console.log("Calling upon : https://stark-falls-82245.herokuapp.com")
         e.preventDefault()
         fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",
@@ -62,28 +58,7 @@ const  Login = ({setToken}) => {
         })
     }
 
-    const handleTest = (e) => {
-        console.log("Logging in guest...")
-        e.preventDefault()
-        fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
-            method: "POST",
-            mode: 'cors',
-            credentials: 'include',
-            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*',},
-            body: JSON.stringify({
-                username: "test",
-                password: "testing"
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.token) {
-                dispatch(changeToken(data))
-                setToken(data)
-            }
-        })
-    }
-
+    // used to quickly create a new user - Currently not in use
     const handleCreate = (e) => {
         let first = 'test1'
         let last = ''
@@ -105,7 +80,6 @@ const  Login = ({setToken}) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log("DATA: ", data)
                 if(!data.ok) {
                     console.log("ERRORS IN SIGNUP")
                 }
@@ -117,7 +91,6 @@ const  Login = ({setToken}) => {
     
     const Errors = () => {
         if(errors && errors.length > 1) {
-            console.log("Error function: ", errors)
             return(
             <div>
                 {errors.map((err) => {
@@ -164,8 +137,6 @@ const  Login = ({setToken}) => {
                     sign up for your own account whenever you want.
                 </p>
                 <Button varient='primary' onClick={handleGuest}>Guest Log In</Button>
-                <Button variant='info' onClick={handleTest}>Test log in</Button>
-                <Button variant='secondary' onClick={handleCreate}>Create user</Button>
             </div>
         </div>
         

@@ -27,7 +27,7 @@ const Post = (props) => {
                 mode: 'cors'})
             .then(response => {
                 if(!response.ok) {
-                    console.log(response)
+                    return
                 }
                 props.setChange(!props.stateChange)
             })

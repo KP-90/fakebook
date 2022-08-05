@@ -54,21 +54,18 @@ const FriendsPending = ({stateChange, setChange}) => {
                 )
                 .then(response => response.json())
                 .then(data => {
-                    console.log("OK :", data)
+
                 })
             }
         ], function(err, result) {
-            if(err) {console.log(err)}
             setChange(!stateChange)
         })
     }
 
     
     const declineFriend = (e) => {
-        console.log("DECLINE")
         // Remove friends id from the current user pending list
         let index = e.target.parentNode.id
-        console.log(index)
         let pending_list = [...currentUser.pending_friends]
         pending_list.splice(index, 1)
         fetch(`${process.env.REACT_APP_BASE_URL}/user/update/${currentUser._id}`, {method: 'post', mode: 'cors', 
@@ -80,7 +77,6 @@ const FriendsPending = ({stateChange, setChange}) => {
         )
         .then(response => {
             if(response.ok) {
-                console.log("RESPONSE OK")
                 setChange(!stateChange)
             }
         })
