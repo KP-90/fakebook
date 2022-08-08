@@ -17,21 +17,24 @@ const Comments = ({id}) => {
     // Submits a new comment
     const HandleSubmit = () => {
         let commentText = document.querySelector("#postingComment")
-        fetch(`${process.env.REACT_APP_BASE_URL}/comments/${id}`, {
-            method: 'post',
-            mode: 'cors',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                author: currentUser._id,
-                comment: commentText.value,
-                parentPost: id
+        if (commentText.value.length > 0) {
+            fetch(`${process.env.REACT_APP_BASE_URL}/comments/${id}`, {
+                method: 'post',
+                mode: 'cors',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    author: currentUser._id,
+                    comment: commentText.value,
+                    parentPost: id
+                })
             })
-        })
-        .then(response => {
-            if(response.ok) {
-                setChange(!change)
-            }
-        })
+            .then(response => {
+                if(response.ok) {
+                    commentText.value = ''
+                    setChange(!change)
+                }
+            })
+    }
         
     }
 
