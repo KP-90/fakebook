@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/userFiles/Login";
 import Userinfo from "./components/userFiles/Userinfo";
 import SingleUser from "./components/userFiles/SingleUserInfo";
+import Footer from "./components/Footer";
 import useToken from "./hooks/useToken";
 
 import { changeUser } from "./components/userSlice";
@@ -47,6 +48,7 @@ function App() {
           <Route path="/user/me" element={<Userinfo setToken={setToken}/>} />
           <Route path="/user/:id" element={<SingleUser setToken={setToken} />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
       )}
     </div>

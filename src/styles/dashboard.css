@@ -1,6 +1,6 @@
 .dashboard {
     width: 100vw;
-    height: 80vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     border-top: 1px solid blue;
@@ -24,6 +24,7 @@ textarea {
     grid-column: 0;
     background-color: aliceblue;
     padding: 5px;
+    height: 105%;
 }
 
 @media only screen and (max-width: 600px) {
