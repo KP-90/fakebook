@@ -10,4 +10,6 @@ the api/backend can be found here - (https://github.com/KP-90/fakebook-api)
 The main goal of this project was to create a frontend that will work with a completely separate backend. 
 
 
-- need to fix adding comments spamming submit btn
+- Deleting posts doesn't update bug. all posts variable isnt being updated when delete state changes.
+
+- Fix timestamps using https://mongoosejs.com/docs/timestamps.html

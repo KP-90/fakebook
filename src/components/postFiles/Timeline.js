@@ -4,9 +4,10 @@ import '../../styles/timeline.css'
 
 import Post from "./Post"
 
-const Timeline = ({allPosts}) => {
+const Timeline = () => {
 
     const [stateChange, setChange] = useState(false)
+    const allPosts = useSelector(state => state.userInfo.allPosts)
 
     return(
         <div className="timeline">

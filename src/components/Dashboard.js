@@ -1,7 +1,8 @@
 // Section of the page below the Header. Will hold most, if not all, of the main frontpage content.
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Button, Form } from "react-bootstrap"
+import { changePosts } from "./userSlice"
 // import components
 import SidePanel from "./SidePanel"
 import Timeline from "./postFiles/Timeline"
@@ -9,15 +10,16 @@ import '../styles/dashboard.css'
 
 
 const Dashboard = () => {
+    const dispatch = useDispatch()
     const currentUser = useSelector(state => state.userInfo.user)
     const [stateChange, setChange] = useState(false)
-    const [allPosts, setAllPosts] = useState()
+
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BASE_URL}`, {mode: 'cors'})
         .then(response => response.json())
         .then(data => {
-            setAllPosts(data.results)
+            dispatch(changePosts(data.results))
         })
     }, [stateChange])
 
@@ -56,7 +58,7 @@ const Dashboard = () => {
                         </Form.Group>
                     </Form>
                 </div>
-                <Timeline allPosts={allPosts}/>
+                <Timeline />
             </div>
             <div className="blank"></div>
         </div>
