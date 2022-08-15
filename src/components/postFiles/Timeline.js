@@ -8,6 +8,7 @@ const Timeline = () => {
 
     const [stateChange, setChange] = useState(false)
     const allPosts = useSelector(state => state.userInfo.allPosts)
+    console.log(allPosts)
 
     return(
         <div className="timeline">
