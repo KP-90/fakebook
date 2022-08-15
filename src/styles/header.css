@@ -17,3 +17,15 @@
 .navbar-nav {
     width: 10em;
 }
+
+.navMenu {
+    width: 15em;
+    
+}
+
+@media only screen and (max-width: 991px) {
+    .navMenu{
+        background-color: white;
+        border: 1px solid black;
+    }
+}

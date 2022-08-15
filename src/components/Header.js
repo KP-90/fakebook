@@ -36,9 +36,9 @@ const Header = ({setToken}) => {
                     <Nav className='me-auto justify-content-end'>
                         <Nav.Link></Nav.Link>
                     </Nav>
-                    <Nav className="justify-content-end">
+                    <Nav className="justify-content-end navMenu">
                         <Nav.Item className="navitem"><Link to="/user/me"><h2>{user.username} <UserLink /></h2></Link></Nav.Item>
-                        <Nav.Item ><Nav.Link><Button className="btn" variant="primary" type="button" onClick={HandleLogout}>Logout</Button></Nav.Link></Nav.Item>
+                        <Nav.Item ><Nav.Link><Button className="navitem btn" variant="primary" type="button" onClick={HandleLogout}>Logout</Button></Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
