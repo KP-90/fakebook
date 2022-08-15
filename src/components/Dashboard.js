@@ -58,7 +58,7 @@ const Dashboard = () => {
                         </Form.Group>
                     </Form>
                 </div>
-                <Timeline />
+                <Timeline setChange={setChange} stateChange={stateChange}/>
             </div>
             <div className="blank"></div>
         </div>
@@ -67,6 +67,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
-// IDEA: incorporate an accordian for the side panel.
-// Docs: https://react-bootstrap.github.io/components/accordion/

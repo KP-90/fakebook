@@ -11,5 +11,3 @@ The main goal of this project was to create a frontend that will work with a com
 
 
 - Deleting posts doesn't update bug. all posts variable isnt being updated when delete state changes.
-
-- Fix timestamps using https://mongoosejs.com/docs/timestamps.html

@@ -4,18 +4,16 @@ import '../../styles/timeline.css'
 
 import Post from "./Post"
 
-const Timeline = () => {
+const Timeline = (props) => {
 
-    const [stateChange, setChange] = useState(false)
     const allPosts = useSelector(state => state.userInfo.allPosts)
-    console.log(allPosts)
 
     return(
         <div className="timeline">
             <h3>Timeline</h3>
             <div className="container posts">
                 {allPosts ? allPosts.map((post, i) => {
-                    return <Post key={i} info={post} stateChange={stateChange} setChange={setChange}/>
+                    return <Post key={i} info={post} stateChange={props.stateChange} setChange={props.setChange}/>
                 }) : <p>Loading...</p>}
             </div>
             

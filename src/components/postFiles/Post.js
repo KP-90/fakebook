@@ -3,15 +3,14 @@
 import { Link } from "react-router-dom"
 import { Card, Button } from "react-bootstrap"
 import {BsFillTrashFill } from "react-icons/bs"
-
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+
 import { useSelector } from "react-redux"
 
 import EditPost from "./EditPost";
 import Comments from "./Comments";
 import LikeBtn from "./LikeBtn";
-import { useState } from "react";
 
 /* props contents: author, post_contents, likes, date_created, stateChange, setChange() */
 const Post = (props) => {
@@ -27,7 +26,7 @@ const Post = (props) => {
                 mode: 'cors'})
             .then(response => {
                 if(!response.ok) {
-                    return
+                    console.log("Error: ", response)
                 }
                 props.setChange(!props.stateChange)
             })
