@@ -12,6 +12,7 @@ import '../styles/dashboard.css'
 const Dashboard = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.userInfo.user)
+    const allPosts = useSelector(state => state.userInfo.allPosts)
     const [stateChange, setChange] = useState(false)
 
 
@@ -58,7 +59,7 @@ const Dashboard = () => {
                         </Form.Group>
                     </Form>
                 </div>
-                <Timeline setChange={setChange} stateChange={stateChange}/>
+                <Timeline allPosts={allPosts} setChange={setChange} stateChange={stateChange}/>
             </div>
             <div className="blank"></div>
         </div>

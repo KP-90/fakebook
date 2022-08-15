@@ -6,11 +6,18 @@ import Post from "./Post"
 
 const Timeline = (props) => {
 
-    const allPosts = useSelector(state => state.userInfo.allPosts)
+    let {allPosts} = props
+    
+    let Content = () => {
+        if(!allPosts || allPosts.length < 1) {
+            return <p>No posts by this user yet.</p>
+        }
+    }
 
     return(
         <div className="timeline">
             <h3>Timeline</h3>
+            <Content />
             <div className="container posts">
                 {allPosts ? allPosts.map((post, i) => {
                     return <Post key={i} info={post} stateChange={props.stateChange} setChange={props.setChange}/>
