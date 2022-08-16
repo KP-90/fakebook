@@ -2,7 +2,7 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changeToken, changeUser } from "./userSlice";
+import { changeToken, changeUser } from "../redux/userSlice";
 import '../styles/header.css'
 
 const Header = ({setToken}) => {

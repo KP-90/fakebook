@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {changeToken, changeUser} from '../userSlice'
+import {changeToken, changeUser} from '../../redux/userSlice'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../../styles/login.css'

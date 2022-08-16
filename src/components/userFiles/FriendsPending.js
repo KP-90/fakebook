@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Modal, Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { changeUser } from "../userSlice"
+import { changeUser } from "../../redux/userSlice"
 import '../../styles/userPage.css'
 const async = require('async')
 

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, Form } from "react-bootstrap"
-import { changePosts } from "./userSlice"
+import { changePosts } from "../redux/userSlice"
 // import components
 import SidePanel from "./SidePanel"
 import Timeline from "./postFiles/Timeline"

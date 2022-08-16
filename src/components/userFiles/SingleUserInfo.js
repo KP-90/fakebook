@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Button } from "react-bootstrap"
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { changeUser } from "../userSlice"
+import { changeUser } from "../../redux/userSlice"
 import '../../styles/userPage.css'
 import FriendList from "./FriendsList"
 import Timeline from "../postFiles/Timeline";

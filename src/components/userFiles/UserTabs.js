@@ -4,7 +4,7 @@ import { Button, Modal } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Timeline from '../postFiles/Timeline';
-import { changeToken, changeUser } from '../userSlice';
+import { changeToken, changeUser } from '../../redux/userSlice';
 import { useNavigate } from 'react-router';
 
 const UserTabs = (props) => {

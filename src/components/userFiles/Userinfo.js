@@ -6,7 +6,7 @@ import Post from "../postFiles/Post"
 import UserTabs from "./UserTabs"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { changeUser } from "../userSlice"
+import { changeUser } from "../../redux/userSlice"
 import useToken from "../../hooks/useToken"
 import '../../styles/userPage.css'
 

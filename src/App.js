@@ -13,7 +13,7 @@ import SingleUser from "./components/userFiles/SingleUserInfo";
 import Footer from "./components/Footer";
 import useToken from "./hooks/useToken";
 
-import { changeUser } from "./components/userSlice";
+import { changeUser } from "./redux/userSlice";
 
 
 function App() {
