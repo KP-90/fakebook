@@ -195,13 +195,23 @@ const SingleUser = (props) => {
         }
     }
 
+    let Welcome = () => {
+
+        if(targetUser.isAdmin) {
+            return <h1>"<strong>{targetUser.username.charAt(0).toUpperCase() + targetUser.username.slice(1)}</strong>" - (admin)</h1>
+        }
+        else {
+            return <h1>"<strong>{targetUser.username}</strong>"</h1>
+        }
+    }
+
     if(!loading) {
     return(
         <div>
             <h2>Welcom to the profile of {targetUser.first} {targetUser.last}</h2>
-            <p>Joined: {targetUser.date_created}</p>
+            <p>Joined: {targetUser.date_readable}</p>
             <h3>or should we say...</h3>
-            <h1>"<strong>{targetUser.username}</strong>"</h1>
+            <Welcome />
 
             <p>They have <FriendList friends={targetUser.friends} /></p>
             <p>and {targetUser.pending_friends.length} pending requests</p>

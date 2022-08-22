@@ -37,7 +37,7 @@ const Post = (props) => {
     // Add delete and edit buttons to logged in user posts. Edit button is located in the EditPost.js file
     // Tooltips are from https://react-bootstrap.github.io/components/overlays/#tooltips
     let Footer = () => {
-        if(currentUser._id === info.author._id) {
+        if(currentUser._id === info.author._id || currentUser.isAdmin) {
             return <div className="postOptions">    
                     <EditPost info={info} setChange={props.setChange} stateChange={props.stateChange}/>
                     <span> | </span>
