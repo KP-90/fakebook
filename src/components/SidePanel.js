@@ -5,8 +5,9 @@ import { ListGroup } from "react-bootstrap"
 
 const SidePanel = () => {
 
-    const [allUsers, setAllUsers] = useState()
+    const [allUsers, setAllUsers] = useState([])
     const [loading, setLoading] = useState(true)
+    const [display, setDisplay] = useState(allUsers)
     const [errors, setErrors] = useState()
 
     useEffect(() => { 
@@ -24,12 +25,24 @@ const SidePanel = () => {
         })        
     }, [])
 
+    const handleChange = ()=> {
+        let searchParam = document.querySelector("#searchBar").value
+        if(!searchParam) {
+            setDisplay(allUsers)
+            return
+        }
+        console.log("ALL USERS", allUsers)
+        let filtered = allUsers.filter(user => user.username.includes(searchParam))
+        console.log(filtered)
+    }
+
     return(
         <div className="side-panel">
-            <h2>Trending Users</h2>
+            <h2>Users</h2>
+            <input id="searchBar" onChange={handleChange}></input>
             <ListGroup variant="flush">
             {!loading ? (
-                allUsers.map(function(user, i) {
+                display.map(function(user, i) {
                     let id = user._id
                     return <ListGroup.Item key={i}><Link to={`/user/${id}`}>{user.username}</Link></ListGroup.Item>
                 })
