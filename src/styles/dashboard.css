@@ -1,8 +1,9 @@
 .dashboard {
     width: 100vw;
     height: 100%;
+    overflow: scroll;
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1.5fr 5fr 1.5fr;
     border-top: 1px solid blue;
 }
 
@@ -26,6 +27,7 @@ textarea {
     background-color: aliceblue;
     padding: 5px;
     height: 100%;
+    overflow-y: scroll;
 }
 
 @media only screen and (max-width: 600px) {

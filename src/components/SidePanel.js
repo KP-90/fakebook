@@ -7,7 +7,7 @@ const SidePanel = () => {
 
     const [allUsers, setAllUsers] = useState([])
     const [loading, setLoading] = useState(true)
-    const [display, setDisplay] = useState(allUsers)
+    const [display, setDisplay] = useState([])
     const [errors, setErrors] = useState()
 
     useEffect(() => { 
@@ -20,6 +20,7 @@ const SidePanel = () => {
             }
             else {
                 setAllUsers(data.user)
+                setDisplay(data.user)
             }
             setLoading(false)
         })        
@@ -31,9 +32,8 @@ const SidePanel = () => {
             setDisplay(allUsers)
             return
         }
-        console.log("ALL USERS", allUsers)
         let filtered = allUsers.filter(user => user.username.includes(searchParam))
-        console.log(filtered)
+        setDisplay(filtered)
     }
 
     return(
