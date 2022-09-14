@@ -1,7 +1,6 @@
 .dashboard {
     width: 100vw;
     height: 100%;
-    overflow: scroll;
     display: grid;
     grid-template-columns: 1.5fr 5fr 1.5fr;
     border-top: 1px solid blue;

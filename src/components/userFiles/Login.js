@@ -13,6 +13,7 @@ const  Login = ({setToken}) => {
 
     // takes username and password then sends to api for verification. Saves a token on success
     const handleSubmit = (e) => {
+        console.log(process.env)
         e.preventDefault()
         let uname = document.querySelector('#uname').value
         let pword = document.querySelector('#pword').value
@@ -39,6 +40,7 @@ const  Login = ({setToken}) => {
 
     // Guest log on. import './App.css';
     const handleGuest = (e) => {
+        console.log(process.env)
         e.preventDefault()
         fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: "POST",

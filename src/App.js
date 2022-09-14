@@ -17,6 +17,7 @@ import { changeUser } from "./redux/userSlice";
 
 
 function App() {
+  console.log("URL", window.location.href)
 
   const dispatch = useDispatch()
   const {token, setToken} = useToken()
