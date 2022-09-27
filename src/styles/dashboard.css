@@ -41,7 +41,7 @@ textarea {
     }
 }
 
-.blank {
+.messages-panel {
     grid-column: 3;
 }
 .card {

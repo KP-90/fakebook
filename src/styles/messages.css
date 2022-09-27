@@ -1,0 +1,11 @@
+.messages-panel {
+    border-left: 1px solid blue;
+    background-color: aliceblue;
+}
+
+.message-btn {
+    margin: 1em;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}

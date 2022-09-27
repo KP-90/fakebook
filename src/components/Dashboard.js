@@ -6,6 +6,7 @@ import { changePosts } from "../redux/userSlice"
 // import components
 import SidePanel from "./SidePanel"
 import Timeline from "./postFiles/Timeline"
+import MessagePanel from "./MessagePanel"
 import '../styles/dashboard.css'
 
 
@@ -61,7 +62,7 @@ const Dashboard = () => {
                 </div>
                 <Timeline allPosts={allPosts} setChange={setChange} stateChange={stateChange}/>
             </div>
-            <div className="blank"></div>
+            <MessagePanel />
         </div>
         
     )
