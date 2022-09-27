@@ -62,7 +62,7 @@ const Dashboard = () => {
                 </div>
                 <Timeline allPosts={allPosts} setChange={setChange} stateChange={stateChange}/>
             </div>
-            <MessagePanel />
+            <MessagePanel friends={currentUser.friends} />
         </div>
         
     )

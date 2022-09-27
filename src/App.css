@@ -2,6 +2,8 @@
   text-align: center;
   min-height: 100vh;
   max-height: 150vh;
+  max-width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
 }
