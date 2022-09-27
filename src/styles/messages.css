@@ -22,3 +22,8 @@
     box-shadow: 0px 0px 5px black;
     cursor: pointer;
 }
+
+.person-details {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-import NewMessage from './messageFiles/NewMessage';
+import Message from './messageFiles/Message';
 import '../styles/messages.css'
 
 
@@ -15,16 +15,13 @@ const MessagePanel = (props) => {
 
     const FriendList = () => {
         return props.friends.map((friend, i) => {
-            return(<Card key={i} className='person'>
-                <Card.Body><h4>{friend.display_name}</h4></Card.Body>
-            </Card>)
+            return(<Message friend={friend} key={i + friend.username}/>)
         })
     }
 
     return(
         <div className="messages-panel">
             <h2>Messages</h2>
-            <NewMessage />
             <div className='message-container'>
                 <FriendList />
             </div>
