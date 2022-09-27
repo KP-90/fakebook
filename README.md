@@ -2,9 +2,10 @@
 
 ## This is the frontend portion of the app
 
-### Live view - https://mighty-cliffs-46847.herokuapp.com/ 
+### Live view - https://fakebook-front.onrender.com
 
-*Warning: App may be slow to start up as it, and the API it uses, are hosted on a free hosting site. 
+*WARNING: App is hosted for free on Render.com. Thus it will take 30s-60s to actually start up, and may be slow to update. This is due to the nature of the 
+free part of the hosting site.
 
 
 
