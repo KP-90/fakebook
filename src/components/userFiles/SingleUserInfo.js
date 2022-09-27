@@ -183,7 +183,7 @@ const SingleUser = (props) => {
             return <div><Button variant="secondary" onClick={RemoveFriend}>Remove Friend</Button></div>
         }
         else {
-            return <div><Button variant="primary" onClick={AddFriend}>Add Friend</Button></div>
+            return <div><Button variant="primary" onClick={AddFriend}>Send Friend Request</Button></div>
         }
     }
 
