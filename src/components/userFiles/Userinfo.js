@@ -2,7 +2,6 @@
 
 import FriendList from "./FriendsList"
 import FriendsPending from "./FriendsPending"
-import Post from "../postFiles/Post"
 import UserTabs from "./UserTabs"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
