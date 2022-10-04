@@ -11,6 +11,7 @@ import Login from "./components/userFiles/Login";
 import Userinfo from "./components/userFiles/Userinfo";
 import SingleUser from "./components/userFiles/SingleUserInfo";
 import Footer from "./components/Footer";
+import Error from "./Error";
 import useToken from "./hooks/useToken";
 
 import { changeUser } from "./redux/userSlice";
@@ -21,6 +22,14 @@ function App() {
   const dispatch = useDispatch()
   const {token, setToken} = useToken()
   const user = useSelector(state => state.userInfo.user)
+
+  // send signal to wake server up
+  let wakeServer = async () => {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/ping`, {mode: 'cors'})
+    .catch(err => {return})
+    return
+  }
+  wakeServer();
 
   // Fetch the logged in user so we know when we can start rendering 
   useEffect(() => {
