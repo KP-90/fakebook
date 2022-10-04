@@ -65,7 +65,7 @@ const Signup = () => {
     }
 
     return (
-        <span>
+        <>
             <p className="link" onClick={handleShow}>Sign Up here</p>
             <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton>
@@ -125,7 +125,7 @@ const Signup = () => {
                     </Modal.Footer>
                 </Form>
             </Modal>
-        </span>
+        </>
     );
 }
 
