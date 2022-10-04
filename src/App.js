@@ -11,7 +11,6 @@ import Login from "./components/userFiles/Login";
 import Userinfo from "./components/userFiles/Userinfo";
 import SingleUser from "./components/userFiles/SingleUserInfo";
 import Footer from "./components/Footer";
-import Error from "./Error";
 import useToken from "./hooks/useToken";
 
 import { changeUser } from "./redux/userSlice";
