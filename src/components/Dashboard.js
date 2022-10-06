@@ -6,7 +6,7 @@ import { changePosts } from "../redux/userSlice"
 // import components
 import SidePanel from "./SidePanel"
 import Timeline from "./postFiles/Timeline"
-import MessagePanel from "./MessagePanel"
+import MessagePanel from "./messageFiles/MessagePanel"
 import '../styles/dashboard.css'
 
 
