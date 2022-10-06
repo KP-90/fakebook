@@ -27,3 +27,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.messages-modal {
+    border: 1px solid black;
+    margin: auto;
+    width: 90%;
+    min-height: 50vh;
+}
+
+.messages-inputs {
+    margin: auto;
+    width: 90%;
+}
+
+.messages-inputs > input {
+    min-width: 150px;
+    width: 50%;
+}
