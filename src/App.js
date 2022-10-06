@@ -22,6 +22,14 @@ function App() {
   const {token, setToken} = useToken()
   const user = useSelector(state => state.userInfo.user)
 
+  // send signal to wake server up
+  let wakeServer = async () => {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/ping`, {mode: 'cors'})
+    .catch(err => {return})
+    return
+  }
+  wakeServer();
+
   // Fetch the logged in user so we know when we can start rendering 
   useEffect(() => {
     if(token) {           

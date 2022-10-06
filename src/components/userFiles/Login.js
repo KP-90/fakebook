@@ -110,6 +110,15 @@ const  Login = ({setToken}) => {
         else{return}
     }
 
+    let showPass = () => {
+        let x = document.querySelector("#password")
+        if(x.type === 'password') {
+            x.type = 'text'
+        } else {
+            x.type = 'password'
+        }
+    }
+
     return(
         <div className='container center'>
             <h2>Please Log in</h2>
@@ -120,10 +129,13 @@ const  Login = ({setToken}) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="pword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' required/>
+                    <Form.Control id="password" type='password' required/>
+                </Form.Group>
+                <Form.Group className="mb-3" >
+                    <Form.Check type='checkbox' label="Show Password" onClick={showPass} style={{'textAlign': 'initial'}} />
                 </Form.Group>
                 <Errors />
-                <div>
+                <div className='center'>
                     <Button type="submit">Submit</Button>
                     <p>or</p>
                     <Signup />
@@ -133,7 +145,7 @@ const  Login = ({setToken}) => {
 
             </Form>
             <hr></hr>
-            <div className='container'>
+            <div className='guest_container'>
                 <h3>Guest Log in</h3>
                 <p>Click below to log in to the Guest account to see how the site looks. You will have limited access to things but you can still
                     sign up for your own account whenever you want.
