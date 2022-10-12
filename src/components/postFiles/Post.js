@@ -53,11 +53,11 @@ const Post = (props) => {
 
     return(
         <Card>
-            <Card.Title>
-                <Link to={`/user/${info.author._id}`}>{info.author.username}</Link>
+            <Card.Title className="card-contents">
+                <Link to={`/user/${info.author._id}`}>{info.author.display_name}</Link>
             </Card.Title>
-            <Card.Subtitle>Posted: {info.date_readable}</Card.Subtitle>
-            <Card.Text>{info.post_contents}</Card.Text>
+            <Card.Subtitle className="card-contents">Posted: {info.date_readable}</Card.Subtitle>
+            <Card.Text className="card-contents">{info.post_contents}</Card.Text>
             <div className="postInfo">
                 <Comments id={info._id}/> 
                 <LikeBtn currentUser={currentUser} info={info}/>

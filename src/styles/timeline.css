@@ -11,6 +11,11 @@ textarea {
 .card {
     margin-top: 5px;
     text-align: start;
+    border-radius: 10px;
+}
+
+.card-contents {
+    padding: 5px;
 }
 
 .icon:hover {
